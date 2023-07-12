@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import Application.Supplement;
 import Application.User;
 import Application.WorkDay;
@@ -18,7 +16,7 @@ public class Main {
         }};
         User userOne = new User(128.83, supplements);
         
-        WorkDay d1 = new WorkDay("13:00", "21:00", "0:00","sh", userOne);
+        WorkDay d1 = new WorkDay(new String[]{"16:45", "18:45", "", "18:45", "19:15", "b", "19:15", "21:15", ""}, "sa", userOne);
         d1.calculateSalary();
         System.out.println(d1.getSalary());
     }
