@@ -66,7 +66,9 @@ public class UnitTests {
 
     @Test 
     public void WeekDayWithBreakAndNightSupplementLateHours() {
-
+        WorkDay workDay = new WorkDay(new String[]{"16:00", "23:00", "", "23:00", "23:30", "b", "23:30", "23:59", ""}, "n", user);
+        workDay.calculateSalary();
+        assertEquals(1127.904, workDay.getSalary(), 0.1);
     }
 
 
@@ -79,7 +81,9 @@ public class UnitTests {
 
     @Test
     public void WeekDayWithBreakAndNightSupplementEarlyHours() {
-
+        WorkDay workDay = new WorkDay(new String[]{"04:00", "05:30", "", "05:30", "06:00", "b", "06:00", "10:00", ""}, "n", user);
+        workDay.calculateSalary();
+        assertEquals(766.99, workDay.getSalary(), 0.1);
     }
 
     @Test
@@ -91,7 +95,9 @@ public class UnitTests {
 
     @Test
     public void SaturdayWithBreakAndSupplement() {
-
+        WorkDay workDay = new WorkDay(new String[]{"14:00", "16:00", "", "16:00", "16:30", "b", "16:30", "20:00", ""}, "sa", user);
+        workDay.calculateSalary();
+        assertEquals(938.065, workDay.getSalary(), 0.1);
     }
 
     @Test
@@ -103,6 +109,8 @@ public class UnitTests {
 
     @Test
     public void SundayWithBreakAndSupplement() {
-
+        WorkDay workDay = new WorkDay(new String[]{"13:00", "17:00", "", "17:00", "17:30", "b", "17:30", "21:00", ""}, "sh", user);
+        workDay.calculateSalary();
+        assertEquals(1402.35, workDay.getSalary(), 0.1);
     }
 }
