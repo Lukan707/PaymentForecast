@@ -2,6 +2,11 @@ package Controller;
 
 import java.util.ArrayList;
 
+/*
+ * This class represent a user.
+ * It contains the users current hourly salary,
+ * a list of a users supplement and a list of the days the user worked .
+ */
 public class User {
     
     public Double hourlySalary;

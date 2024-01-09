@@ -1,15 +1,22 @@
 package Controller;
 
+/*
+ * This class represent a day where a user is working.
+ * It holds the hours worked, hourly salary, associated User and day of the week.
+ * It contains method for calculating the salary of the day, and for getting the salary.
+ * The methods are split, since the retrieval of the attribute happens more
+ * frequently than calculating it.
+*/
 public class WorkDay {
 
     private Double startTimeInHours;
     private Double endTimeInHours;
     private Double breakTimeInHours;
-    private String workdayType;
+    private SupplementType workdayType;
     private User user;
     private Double salary;
 
-    public WorkDay(String startTime, String endTime, String breakTime, String workdayType, User user) {
+    public WorkDay(String startTime, String endTime, String breakTime, SupplementType workdayType, User user) {
         startTimeInHours = timeformatToHours(startTime);
         endTimeInHours = timeformatToHours(endTime);
         breakTimeInHours = timeformatToHours(breakTime);
