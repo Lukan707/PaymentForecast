@@ -5,9 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Application.Supplement;
-import Application.User;
-import Application.WorkDay;
+import Controller.Supplement;
+import Controller.User;
+import Controller.WorkDay;
 
 public class UnitTests {
 

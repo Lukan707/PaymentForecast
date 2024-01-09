@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-import Application.Supplement;
-import Application.User;
-import Application.WorkDay;
+import Controller.Supplement;
+import Controller.User;
+import Controller.WorkDay;
 
 public class Main {
 
