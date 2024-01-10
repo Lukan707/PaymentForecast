@@ -5,10 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Controller.Supplement;
-import Controller.SupplementType;
-import Controller.User;
-import Controller.WorkDay;
+import Controller.*;
 
 public class UnitTestsWorkDay {
 
@@ -17,11 +14,11 @@ public class UnitTestsWorkDay {
     @BeforeEach
     public void Setup() {
         ArrayList<Supplement> supplements = new ArrayList<>() {{
-            add(new Supplement(29.0, 18.0, 23.0, SupplementType.Weekday));
-            add(new Supplement(38.95, 23.0, 23.98, SupplementType.Weekday));
-            add(new Supplement(38.95, 0.0, 6.0, SupplementType.Weekday));
-            add(new Supplement(51.0, 15.0, 24.0, SupplementType.Saturday));
-            add(new Supplement(58.15, 0.0, 24.0, SupplementType.Sunday));
+            add(SupplementAdapter.Adapt(29.0, "18:00", "23:00", "weekday"));
+            add(SupplementAdapter.Adapt(38.95, "23:00", "23:59", "weekday"));
+            add(SupplementAdapter.Adapt(38.95, "00:00", "06:00", "weekday"));
+            add(SupplementAdapter.Adapt(51.0, "15:00", "24:00", "saturday"));
+            add(SupplementAdapter.Adapt(58.15, "00:00", "24:00", "sunday"));
         }};
         user = new User(128.83, supplements);
     }
@@ -32,8 +29,19 @@ public class UnitTestsWorkDay {
 
     @Test
     public void WeekDayWithBreakAndNoSupplement() {
-        WorkDay workDay = new WorkDay(new String[]{"08:00", "11:00", "", "11:00", "12:00", "b", "12:00", "16:00", ""}, SupplementType.Weekday, user);
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+            add(TimeIntervalAdapter.Adapt("08:00", "11:00", ""));
+            add(TimeIntervalAdapter.Adapt("11:00", "12:00", "b"));
+            add(TimeIntervalAdapter.Adapt("12:00", "16:00", ""));
+        }};
+
+        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        
+        // Act
         workDay.calculateSalary();
+
+        // Assert
         assertEquals(901.81, workDay.getSalary(), 0.2);
     }
 
