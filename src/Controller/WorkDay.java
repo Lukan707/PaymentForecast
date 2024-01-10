@@ -23,13 +23,6 @@ public class WorkDay {
 
     public void calculateSalary() {
 
-        /* 
-         * Every timeinterval consists of three entries in the array:
-         * - A start time.
-         * - An end time.
-         * - The type of the interval
-        */
-        
         for (int i = 0; i < timeIntervals.length; i += 3) {
             
             if (!timeIntervals[i+2].equals("b")) {
