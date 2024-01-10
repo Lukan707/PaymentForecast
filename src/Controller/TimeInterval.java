@@ -5,13 +5,13 @@ package Controller;
  * A workday consists of one or more timeintervals.
  */
 public class TimeInterval {
-    public String startTime;
-    public String endTime;
+    public int startTimeInSeconds;
+    public int endTimeInSeconds;
     public boolean isBreak;
 
-    public TimeInterval(String startTime, String endTime, boolean isBreak) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public TimeInterval(int startTimeInSeconds, int endTimeInSeconds, boolean isBreak) {
+        this.startTimeInSeconds = startTimeInSeconds;
+        this.endTimeInSeconds = endTimeInSeconds;
         this.isBreak = isBreak;
     }
 }
