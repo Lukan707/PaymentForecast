@@ -1,13 +1,20 @@
-package Application;
+package Controller;
 
+/*
+ * This class represent a day where a user is working.
+ * It holds the hours worked, hourly salary, associated User and day of the week.
+ * It contains method for calculating the salary of the day, and for getting the salary.
+ * The methods are split, since the retrieval of the attribute happens more
+ * frequently than calculating it.
+*/
 public class WorkDay {
 
     private String[] timeIntervals;
-    private String workdayType;
+    private SupplementType workdayType;
     private User user;
     private Double salary;
 
-    public WorkDay(String[] timeIntervals, String workdayType, User user) {
+    public WorkDay(String[] timeIntervals, SupplementType workdayType, User user) {
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
