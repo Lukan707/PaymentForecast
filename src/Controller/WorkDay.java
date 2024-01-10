@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.ArrayList;
+
 /*
  * This class represent a day where a user is working.
  * It holds the hours worked, hourly salary, associated User and day of the week.
@@ -9,12 +11,12 @@ package Controller;
 */
 public class WorkDay {
 
-    private String[] timeIntervals;
+    private ArrayList<TimeInterval> timeIntervals;
     private SupplementType workdayType;
     private User user;
     private Double salary;
 
-    public WorkDay(String[] timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
@@ -23,27 +25,25 @@ public class WorkDay {
 
     public void calculateSalary() {
 
-        for (int i = 0; i < timeIntervals.length; i += 3) {
+        for (TimeInterval interval : timeIntervals) {
             
-            if (!timeIntervals[i+2].equals("b")) {
+            if (!interval.isBreak) {
                 
-                Double startTimeInHours = timeformatToHours(timeIntervals[i]);
-                Double endTimeInHours = timeformatToHours(timeIntervals[i+1]);
-                salary += user.hourlySalary * (endTimeInHours - startTimeInHours); 
+                salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 60); 
         
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.equals(workdayType)) {
                         
-                        if (endTimeInHours > s.startTimeInHours && startTimeInHours < s.endTimeInHours) {
-                            Double supplementTime = endTimeInHours - startTimeInHours;
+                        if (interval.endTimeInSeconds > s.startTimeInHours && interval.startTimeInSeconds < s.endTimeInHours) {
+                            int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
-                            if (endTimeInHours > s.endTimeInHours)
-                                supplementTime -= endTimeInHours - s.endTimeInHours;
+                            if (interval.endTimeInSeconds > s.endTimeInHours)
+                                supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInHours;
 
-                            if (startTimeInHours < s.startTimeInHours)
-                                supplementTime -= s.startTimeInHours - startTimeInHours;
+                            if (interval.startTimeInSeconds < s.startTimeInHours)
+                                supplementTimeInSeconds -= s.startTimeInHours - interval.startTimeInSeconds;
 
-                            salary += s.supplementPay * supplementTime;
+                            salary += s.supplementPay * (supplementTimeInSeconds / 60);
                         }
                     }
                 }

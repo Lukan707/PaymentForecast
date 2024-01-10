@@ -3,7 +3,6 @@ package Controller;
 /*
  * This class provides functionality to adapt timeinterval as strings
  * to TimeIntervalObjects.
- * This class follows the Adpater pattern.
  */
 public class TimeIntervalAdapter {
     public static TimeInterval AdaptTimeIntervalFromStringToObject(String startTime, String endTime, boolean isBreak) {
