@@ -33,37 +33,27 @@ public class WorkDay {
         
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.equals(workdayType)) {
-                        Double supplementTime;
+                        
                         if (endTimeInHours > s.startTimeInHours && startTimeInHours < s.endTimeInHours) {
-
-                            System.out.println("Current used supplement is: " + s.supplementType + " " + s.supplementPay);
-                            System.out.println("vSlut: " + endTimeInHours + ", tStart: " + s.startTimeInHours);
-
-                            supplementTime = s.endTimeInHours - startTimeInHours;
-
+                            Double supplementTime = s.endTimeInHours - startTimeInHours;
+                            
                             if (s.endTimeInHours > endTimeInHours)
                                 supplementTime -= s.endTimeInHours - endTimeInHours;
 
-                            System.out.println("SupplementTime 1: " + supplementTime);
-
                             if (startTimeInHours < s.startTimeInHours)
                                 supplementTime -= s.startTimeInHours - startTimeInHours;
-
-                            System.out.println("SupplementTime 2: " + supplementTime);
 
                             salary += s.supplementPay * supplementTime;
                         }
                     }
                 }
-                System.out.println(salary);
             }
-            System.out.println(salary);
         }
     }
 
     public Double getSalary() { return salary; }
 
-    private Double timeformatToHours(String time) {
+    public static Double timeformatToHours(String time) {
         String[] timeArray = time.split(":");
         return Integer.parseInt(timeArray[0]) + Integer.parseInt(timeArray[1]) / 60.0;
     }

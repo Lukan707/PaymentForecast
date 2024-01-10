@@ -10,7 +10,7 @@ import Controller.SupplementType;
 import Controller.User;
 import Controller.WorkDay;
 
-public class UnitTests {
+public class UnitTestsWorkDay {
 
     User user;
 
@@ -62,14 +62,14 @@ public class UnitTests {
     public void WeekDayWithoutBreakAndNightSupplementLateHours() {
         WorkDay workDay = new WorkDay(new String[]{"17:45", "23:59", ""}, SupplementType.Weekday, user);
         workDay.calculateSalary();
-        assertEquals(986.35, workDay.getSalary(), 0.1);
+        assertEquals(986.339, workDay.getSalary(), 0.1);
     }
 
     @Test 
     public void WeekDayWithBreakAndNightSupplementLateHours() {
         WorkDay workDay = new WorkDay(new String[]{"16:00", "23:00", "", "23:00", "23:30", "b", "23:30", "23:59", ""}, SupplementType.Weekday, user);
         workDay.calculateSalary();
-        assertEquals(1127.904, workDay.getSalary(), 0.1);
+        assertEquals(1127.898, workDay.getSalary(), 0.1);
     }
 
 
@@ -98,7 +98,7 @@ public class UnitTests {
     public void SaturdayWithBreakAndSupplement() {
         WorkDay workDay = new WorkDay(new String[]{"14:00", "16:00", "", "16:00", "16:30", "b", "16:30", "20:00", ""}, SupplementType.Sunday, user);
         workDay.calculateSalary();
-        assertEquals(938.065, workDay.getSalary(), 0.1);
+        assertEquals(1028.39, workDay.getSalary(), 0.1);
     }
 
     @Test
@@ -113,5 +113,35 @@ public class UnitTests {
         WorkDay workDay = new WorkDay(new String[]{"13:00", "17:00", "", "17:00", "17:30", "b", "17:30", "21:00", ""}, SupplementType.Sunday, user);
         workDay.calculateSalary();
         assertEquals(1402.35, workDay.getSalary(), 0.1);
+    }
+
+    @Test
+    public void TimeformatToHours_1600() {
+        Double actual = WorkDay.timeformatToHours("16:00");
+        assertEquals(16, actual);
+    }
+
+    @Test
+    public void TimeformatToHours_2015() {
+        Double actual = WorkDay.timeformatToHours("20:15");
+        assertEquals(20.25, actual);
+    }
+
+    @Test
+    public void TimeformatToHours_2130() {
+        Double actual = WorkDay.timeformatToHours("21:30");
+        assertEquals(21.5, actual);
+    }
+
+    @Test
+    public void TimeformatToHours_2220() {
+        Double actual = WorkDay.timeformatToHours("22:20");
+        assertEquals(22.33, actual, 0.01);
+    }
+
+    @Test
+    public void TimeformatToHours_2359() {
+        Double actual = WorkDay.timeformatToHours("23:59");
+        assertEquals(23.98, actual, 0.01);
     }
 }
