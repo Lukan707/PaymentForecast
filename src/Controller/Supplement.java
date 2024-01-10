@@ -7,14 +7,14 @@ package Controller;
  */
 public class Supplement {
     public Double supplementPay;
-    public Double startTimeInHours;
-    public Double endTimeInHours;
+    public int startTimeInSeconds;
+    public int endTimeInSeconds;
     public SupplementType supplementType;
 
-    public Supplement(Double supplementPay, Double startTimeInHours, Double endTimeInHours, SupplementType supplementType) {
+    public Supplement(Double supplementPay, int startTimeInSeconds, int endTimeInSeconds, SupplementType supplementType) {
         this.supplementPay = supplementPay;
-        this.startTimeInHours = startTimeInHours;
-        this.endTimeInHours = endTimeInHours;
+        this.startTimeInSeconds = startTimeInSeconds;
+        this.endTimeInSeconds = endTimeInSeconds;
         this.supplementType = supplementType;
     }
 }
