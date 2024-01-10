@@ -34,14 +34,14 @@ public class WorkDay {
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.equals(workdayType)) {
                         
-                        if (interval.endTimeInSeconds > s.startTimeInHours && interval.startTimeInSeconds < s.endTimeInHours) {
+                        if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
-                            if (interval.endTimeInSeconds > s.endTimeInHours)
-                                supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInHours;
+                            if (interval.endTimeInSeconds > s.endTimeInSeconds)
+                                supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInSeconds;
 
-                            if (interval.startTimeInSeconds < s.startTimeInHours)
-                                supplementTimeInSeconds -= s.startTimeInHours - interval.startTimeInSeconds;
+                            if (interval.startTimeInSeconds < s.startTimeInSeconds)
+                                supplementTimeInSeconds -= s.startTimeInSeconds - interval.startTimeInSeconds;
 
                             salary += s.supplementPay * (supplementTimeInSeconds / 60);
                         }
