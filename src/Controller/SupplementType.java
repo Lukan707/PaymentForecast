@@ -1,9 +1,14 @@
 package Controller;
 
+/* 
+ * This enum represent the type of supplement
+*/
 public enum SupplementType {
     Weekday,
     Saturday,
     Sunday,
+    Holiday,
     Seniority,
-    PersonalHourly
+    Bonus,
+    Extraordinary
 }
