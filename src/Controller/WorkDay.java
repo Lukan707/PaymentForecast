@@ -35,10 +35,10 @@ public class WorkDay {
                     if (s.supplementType.equals(workdayType)) {
                         
                         if (endTimeInHours > s.startTimeInHours && startTimeInHours < s.endTimeInHours) {
-                            Double supplementTime = s.endTimeInHours - startTimeInHours;
+                            Double supplementTime = endTimeInHours - startTimeInHours;
                             
-                            if (s.endTimeInHours > endTimeInHours)
-                                supplementTime -= s.endTimeInHours - endTimeInHours;
+                            if (endTimeInHours > s.endTimeInHours)
+                                supplementTime -= endTimeInHours - s.endTimeInHours;
 
                             if (startTimeInHours < s.startTimeInHours)
                                 supplementTime -= s.startTimeInHours - startTimeInHours;
