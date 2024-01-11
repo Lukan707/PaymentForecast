@@ -1,4 +1,4 @@
-package lukan.paymentforecast.Model;
+package lukan.paymentforecast.Data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
