@@ -1,10 +1,14 @@
-import Controller.TimeFormatAdapter;
+package lukan.paymentforecast;
+
+import lukan.paymentforecast.Controller.*;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UnitTestsForTimeFormatAdapter {
+/*
+ * This class contains unit test for the TimeFormatAdapter class.
+ */
+public class TestsTimeFormatAdapter {
 
     @Test
     public void TimeformatToSeconds_1600() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="lukan.paymentforecast.AppTest" time="0.023" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="lukan.paymentforecast.TestsWorkDay" time="0.009" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\lukas\AppData\Local\Temp\surefire5270589938431800249\surefirebooter6499344960549601388.jar C:\Users\lukas\AppData\Local\Temp\surefire5270589938431800249 2024-01-11T17-41-38_542-jvmRun1 surefire4630879977474382762tmp surefire_017080467407754713324tmp"/>
+    <property name="sun.java.command" value="C:\Users\lukas\AppData\Local\Temp\surefire14272180316557715696\surefirebooter2457179035587576939.jar C:\Users\lukas\AppData\Local\Temp\surefire14272180316557715696 2024-01-11T17-47-47_482-jvmRun1 surefire13940995670888420256tmp surefire_01882390237492323770tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\lukas\Documents\Projects\PaymentForecast\target\test-classes;C:\Users\lukas\Documents\Projects\PaymentForecast\target\classes;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\lukas\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\lukas\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\lukas\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\lukas\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\lukas\AppData\Local\Temp\surefire5270589938431800249\surefirebooter6499344960549601388.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\lukas\AppData\Local\Temp\surefire14272180316557715696\surefirebooter2457179035587576939.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -60,9 +60,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="TimeformatToSeconds_1600" classname="lukan.paymentforecast.AppTest" time="0.023"/>
-  <testcase name="TimeformatToSeconds_2229" classname="lukan.paymentforecast.AppTest" time="0"/>
-  <testcase name="TimeformatToSeconds_2359" classname="lukan.paymentforecast.AppTest" time="0"/>
-  <testcase name="TimeFormatToSeconds_2015" classname="lukan.paymentforecast.AppTest" time="0"/>
-  <testcase name="TimeFormatToSeconds_2130" classname="lukan.paymentforecast.AppTest" time="0"/>
+  <testcase name="SaturdatWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="WeekDayWithoutBreakAndNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="SaturdayWithoutBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="WeekDayWithoutBreakAndEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="WeekDayWithBreakAndNoSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="SundayWithoutBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001"/>
+  <testcase name="SaturdayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="WeekDayWithBreakAndNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="SundayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
+  <testcase name="WeekDayWithBreakAndEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.004"/>
+  <testcase name="WeekDayWithBreakAndNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.001"/>
+  <testcase name="WeekDayWithoutBreakAndNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0"/>
 </testsuite>

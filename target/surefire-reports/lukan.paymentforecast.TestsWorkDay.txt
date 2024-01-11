@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: lukan.paymentforecast.AppTest
+Test set: lukan.paymentforecast.TestsWorkDay
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s - in lukan.paymentforecast.AppTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in lukan.paymentforecast.TestsWorkDay
