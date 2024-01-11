@@ -1,4 +1,4 @@
-package lukan.paymentforecast.Data;
+package lukan.paymentforecast.Model;
 
 import java.util.List;
 import lukan.paymentforecast.DomainLogic.*;
