@@ -1,9 +1,18 @@
-package lukan.paymentforecast.Data;
+package lukan.paymentforecast.Model;
 
 import java.util.List;
 import lukan.paymentforecast.DomainLogic.*;
 
+/*
+ * This class is an implementation of the DataService interface.
+ * It contains methods for reading and writing data to a file.
+ */ 
 public class DataService implements DataServiceInterface {
+    
+    public DataService() {
+        
+    }
+    
     public List<User> getUsers() {
        throw new UnsupportedOperationException(); 
     }
