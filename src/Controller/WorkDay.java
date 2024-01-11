@@ -29,21 +29,23 @@ public class WorkDay {
             
             if (!interval.isBreak) {
                 
-                salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 60); 
+                salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
         
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.equals(workdayType)) {
-                        
+
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
+                            System.out.println("SupplementType: " + s.supplementType + ", with pay: " + s.supplementPay + " is applied.");
+
                             if (interval.endTimeInSeconds > s.endTimeInSeconds)
                                 supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInSeconds;
 
                             if (interval.startTimeInSeconds < s.startTimeInSeconds)
                                 supplementTimeInSeconds -= s.startTimeInSeconds - interval.startTimeInSeconds;
 
-                            salary += s.supplementPay * (supplementTimeInSeconds / 60);
+                            salary += s.supplementPay * (supplementTimeInSeconds / 3600.0);
                         }
                     }
                 }
@@ -52,9 +54,4 @@ public class WorkDay {
     }
 
     public Double getSalary() { return salary; }
-
-    public static Double timeformatToHours(String time) {
-        String[] timeArray = time.split(":");
-        return Integer.parseInt(timeArray[0]) + Integer.parseInt(timeArray[1]) / 60.0;
-    }
 }
