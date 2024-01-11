@@ -1,4 +1,4 @@
-package lukan.paymentforecast.Controller;
+package lukan.paymentforecast.DomainLogic;
 
 public class TimeFormatAdapter {
     public static int timeformatToSeconds(String time) {

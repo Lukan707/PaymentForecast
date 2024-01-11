@@ -1,4 +1,4 @@
-package lukan.paymentforecast.Controller;
+package lukan.paymentforecast.DomainLogic;
 
 /* 
  * This enum represent the type of supplement
