@@ -1,5 +1,5 @@
 ## Files that should automatically be converted to LF line endings
-* text eol=lf
+* text eol=crlf
 
 ## Denote alle files that are truly binary
 *.png binary
