@@ -1,4 +1,4 @@
-package Controller;
+package lukan.paymentforecast.Controller;
 
 public class TimeFormatAdapter {
     public static int timeformatToSeconds(String time) {

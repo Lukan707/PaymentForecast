@@ -1,3 +1,5 @@
+package lukan.paymentforecast;
+
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
@@ -5,15 +7,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Controller.*;
+import lukan.paymentforecast.Controller.*;
 
-public class UnitTestsWorkDay {
+/*
+ * This class contains Unit tets for the Workday class.
+ */
+public class TestsWorkDay {
 
     User user;
 
     @BeforeEach
     public void Setup() {
-        ArrayList<Supplement> supplements = new ArrayList<>() {{
+        ArrayList<Supplement> supplements = new ArrayList<Supplement>() {{
             // startTime = 18:00, endTime = 23:00
             add(new Supplement(29.0, 64800, 82800, SupplementType.Weekday));
             // startTime = 23:00, endTime = 23:59
@@ -35,7 +40,7 @@ public class UnitTestsWorkDay {
     @Test
     public void WeekDayWithBreakAndNoSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 08:00, endTime = 11:00
             add(new TimeInterval(28800, 39600, false));
             // startTime = 11:00, endTime = 12:00
@@ -55,7 +60,7 @@ public class UnitTestsWorkDay {
     @Test
     public void WeekDayWithoutBreakAndEveningSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 17:45, endTime = 21:15
             add(new TimeInterval(63900, 76500, false));
         }};
@@ -71,7 +76,7 @@ public class UnitTestsWorkDay {
     @Test
     public void SaturdatWithBreakAndSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 16:45, endTime = 18:45
             add(new TimeInterval(60300, 67500, false));
             // startTime = 18:45, endTime = 19:15
@@ -91,7 +96,7 @@ public class UnitTestsWorkDay {
     @Test
     public void WeekDayWithBreakAndEveningSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 14:00, endTime = 18:00
             add(new TimeInterval(50400, 64800, false));
             // startTime = 18:00, endTime = 18:30
@@ -112,7 +117,7 @@ public class UnitTestsWorkDay {
     
     public void WeekDayWithoutBreakAndNightSupplementLateHours() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 17:45, endTime = 23:59
             add(new TimeInterval(63900, 86340, false));
         }};
@@ -128,7 +133,7 @@ public class UnitTestsWorkDay {
     @Test 
     public void WeekDayWithBreakAndNightSupplementLateHours() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 16:00, endTime = 23:00
             add(new TimeInterval(57600, 82800, false));
             // startTime = 23:00, endTime = 23:30
@@ -149,7 +154,7 @@ public class UnitTestsWorkDay {
     @Test
     public void WeekDayWithoutBreakAndNightSupplementEarlyHours() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 04:00, endTime = 14:00
             add(new TimeInterval(14400, 50400, false));
         }};
@@ -165,7 +170,7 @@ public class UnitTestsWorkDay {
     @Test
     public void WeekDayWithBreakAndNightSupplementEarlyHours() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 04:00, endTime = 05:30
             add(new TimeInterval(14400, 19800, false));
             // startTime = 05:30, endTime = 06:00
@@ -181,7 +186,7 @@ public class UnitTestsWorkDay {
     @Test
     public void SaturdayWithoutBreakAndSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 12:00, endTime = 20:00
             add(new TimeInterval(43200, 72000, false));
         }};
@@ -193,7 +198,7 @@ public class UnitTestsWorkDay {
     @Test
     public void SaturdayWithBreakAndSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 14:00, endTime = 16:00
             add(new TimeInterval(50400, 57600, false));
             // startTime = 16:00, endTime = 16:30
@@ -209,7 +214,7 @@ public class UnitTestsWorkDay {
     @Test
     public void SundayWithoutBreakAndSupplement()  {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 13:00, endTime = 21:00
             add(new TimeInterval(46800, 75600, false));
         }};
@@ -225,7 +230,7 @@ public class UnitTestsWorkDay {
     @Test
     public void SundayWithBreakAndSupplement() {
         // Arrange
-        ArrayList<TimeInterval> intervals = new ArrayList<>() {{
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {{
             // startTime = 13:00, endTime = 17:00
             add(new TimeInterval(46800, 61200, false));
             // startTime = 17:00, endTime = 17:30
