@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.ArrayList;
+
 /*
  * This class represent a day where a user is working.
  * It holds the hours worked, hourly salary, associated User and day of the week.
@@ -9,12 +11,12 @@ package Controller;
 */
 public class WorkDay {
 
-    private String[] timeIntervals;
+    private ArrayList<TimeInterval> timeIntervals;
     private SupplementType workdayType;
     private User user;
     private Double salary;
 
-    public WorkDay(String[] timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
@@ -23,27 +25,27 @@ public class WorkDay {
 
     public void calculateSalary() {
 
-        for (int i = 0; i < timeIntervals.length; i += 3) {
+        for (TimeInterval interval : timeIntervals) {
             
-            if (!timeIntervals[i+2].equals("b")) {
+            if (!interval.isBreak) {
                 
-                Double startTimeInHours = timeformatToHours(timeIntervals[i]);
-                Double endTimeInHours = timeformatToHours(timeIntervals[i+1]);
-                salary += user.hourlySalary * (endTimeInHours - startTimeInHours); 
+                salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
         
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.equals(workdayType)) {
-                        
-                        if (endTimeInHours > s.startTimeInHours && startTimeInHours < s.endTimeInHours) {
-                            Double supplementTime = endTimeInHours - startTimeInHours;
+
+                        if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
+                            int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
-                            if (endTimeInHours > s.endTimeInHours)
-                                supplementTime -= endTimeInHours - s.endTimeInHours;
+                            System.out.println("SupplementType: " + s.supplementType + ", with pay: " + s.supplementPay + " is applied.");
 
-                            if (startTimeInHours < s.startTimeInHours)
-                                supplementTime -= s.startTimeInHours - startTimeInHours;
+                            if (interval.endTimeInSeconds > s.endTimeInSeconds)
+                                supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInSeconds;
 
-                            salary += s.supplementPay * supplementTime;
+                            if (interval.startTimeInSeconds < s.startTimeInSeconds)
+                                supplementTimeInSeconds -= s.startTimeInSeconds - interval.startTimeInSeconds;
+
+                            salary += s.supplementPay * (supplementTimeInSeconds / 3600.0);
                         }
                     }
                 }
@@ -52,9 +54,4 @@ public class WorkDay {
     }
 
     public Double getSalary() { return salary; }
-
-    public static Double timeformatToHours(String time) {
-        String[] timeArray = time.split(":");
-        return Integer.parseInt(timeArray[0]) + Integer.parseInt(timeArray[1]) / 60.0;
-    }
 }
