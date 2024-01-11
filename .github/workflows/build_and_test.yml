@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-    pull_requests:
+  pull_request:
+    branches:
       - main
     
 jobs:
@@ -13,11 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
+          distribution: 'microsoft'
           java-version: '11'
 
       - name: Build with Maven
