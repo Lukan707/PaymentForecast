@@ -9,11 +9,13 @@ import java.util.ArrayList;
  */
 public class User {
     
+    public String name;
     public Double hourlySalary;
     public ArrayList<Supplement> supplements;
     public ArrayList<WorkDay> workDays;
 
-    public User(Double hourlySalary) {
+    public User(String name, Double hourlySalary) {
+        this.name = name;
         this.hourlySalary = hourlySalary;
         this.supplements = new ArrayList<>();
         this.workDays = new ArrayList<>();

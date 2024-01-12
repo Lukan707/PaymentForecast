@@ -19,7 +19,7 @@ public class TestsWorkDay {
     @BeforeEach
     public void Setup() {
         
-        user = new User(128.83);
+        user = new User("Test user", 128.83);
         ArrayList<Supplement> supplements = new ArrayList<Supplement>() {{
             // startTime = 18:00, endTime = 23:00
             add(new Supplement(29.0, 64800, 82800, SupplementType.Weekday));
