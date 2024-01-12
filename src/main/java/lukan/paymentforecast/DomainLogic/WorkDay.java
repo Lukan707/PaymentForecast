@@ -1,7 +1,7 @@
 package lukan.paymentforecast.DomainLogic;
 
 import java.util.Date;
-import java.util.ArrayList;
+import java.util.List;
 
 /*
  * This class represent a day where a user is working.
@@ -12,13 +12,13 @@ import java.util.ArrayList;
 */
 public class WorkDay {
 
-    private ArrayList<TimeInterval> timeIntervals;
+    private List<TimeInterval> timeIntervals;
     private SupplementType workdayType;
     private User user;
     private Double salary;
     private Date date;
 
-    public WorkDay(Date date, ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
         this.date = date;
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;

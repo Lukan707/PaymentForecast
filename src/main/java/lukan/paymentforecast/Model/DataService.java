@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import lukan.paymentforecast.DomainLogic.*;
 
 /*
@@ -29,7 +31,6 @@ public class DataService implements DataServiceInterface {
             users.add(user);
         }
         reader.close();
-
         return users;
     }
 
@@ -45,12 +46,22 @@ public class DataService implements DataServiceInterface {
             }
             String[] data = line.split(",");
             
-            WorkDay workDay = new WorkDay(null, null, user);
+            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);
+            SupplementType supplement = selectSupplementType(data[2]);
+           
+            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, supplement, user);
+            workDays.add(workDay);
         }
+        reader.close();
+        return workDays;
     }
 
-    public static List<TimeInterval> getTimeIntervals(WorkDay workDay) {
+    public static List<TimeInterval> getTimeIntervals(String filePath) throws FileNotFoundException, IOException {
         throw new UnsupportedOperationException();
+    }
+
+    public static SupplementType selectSupplementType(String supplement) {
+        return SupplementType.valueOf(supplement);
     }
 
     public List<Supplement> getSupplements(User user) {
