@@ -1,6 +1,7 @@
 package lukan.paymentforecast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +51,7 @@ public class TestsWorkDay {
             // startTime = 12:00, endTime = 16:00
             add(new TimeInterval(43200, 57600, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
         
         // Act
         workDay.calculateSalary();
@@ -66,7 +67,7 @@ public class TestsWorkDay {
             // startTime = 17:45, endTime = 21:15
             add(new TimeInterval(63900, 76500, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
 
         // Act
         workDay.calculateSalary();
@@ -86,7 +87,7 @@ public class TestsWorkDay {
             // startTime = 19:15, endTime = 21:15
             add(new TimeInterval(69300, 76500, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Saturday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Saturday, user);
         
         // Act
         workDay.calculateSalary();
@@ -106,7 +107,7 @@ public class TestsWorkDay {
             // startTime = 18:30, endTime = 21:15
             add(new TimeInterval(66600, 76500, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
         
         // Act
         workDay.calculateSalary();
@@ -123,7 +124,7 @@ public class TestsWorkDay {
             // startTime = 17:45, endTime = 23:59
             add(new TimeInterval(63900, 86340, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
 
         // Act
         workDay.calculateSalary();
@@ -143,7 +144,7 @@ public class TestsWorkDay {
             // startTime = 23:30, endTime = 23:59
             add(new TimeInterval(84600, 86340, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
         
         // Act
         workDay.calculateSalary();
@@ -160,7 +161,7 @@ public class TestsWorkDay {
             // startTime = 04:00, endTime = 14:00
             add(new TimeInterval(14400, 50400, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
         
         // Act
         workDay.calculateSalary();
@@ -180,7 +181,7 @@ public class TestsWorkDay {
             // startTime = 06:00, endTime = 10:00
             add(new TimeInterval(21600, 36000, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
         workDay.calculateSalary();
         assertEquals(766.99, workDay.getSalary(), 0.01);
     }
@@ -192,7 +193,7 @@ public class TestsWorkDay {
             // startTime = 12:00, endTime = 20:00
             add(new TimeInterval(43200, 72000, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Saturday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Saturday, user);
         workDay.calculateSalary();
         assertEquals(1285.64, workDay.getSalary(), 0.01);
     }
@@ -208,7 +209,7 @@ public class TestsWorkDay {
             // startTime = 16:30, endTime = 20:00
             add(new TimeInterval(59400, 72000, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Sunday, user);
         workDay.calculateSalary();
         assertEquals(1028.39, workDay.getSalary(), 0.01);
     }
@@ -220,7 +221,7 @@ public class TestsWorkDay {
             // startTime = 13:00, endTime = 21:00
             add(new TimeInterval(46800, 75600, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Sunday, user);
         
         // Act
         workDay.calculateSalary();
@@ -240,7 +241,7 @@ public class TestsWorkDay {
             // startTime = 17:30, endTime = 21:00
             add(new TimeInterval(63000, 75600, false));
         }};
-        WorkDay workDay = new WorkDay(intervals, SupplementType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Sunday, user);
         workDay.calculateSalary();
         assertEquals(1402.35, workDay.getSalary(), 0.01);
     }

@@ -16,26 +16,40 @@ public class DataService implements DataServiceInterface {
     
     public List<User> getUsers() throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/users/userList.csv"));
-
         List<User> users = new ArrayList<>();
 
         while(true) {
             String line = reader.readLine();
-            if (line != null) {
+            if (line == null) {
+                // When reaching EOF, readLine returns null
                 break;
             }
+            String[] data = line.split(",");
+            User user = new User(data[0], Double.parseDouble(data[1]));
+            users.add(user);
         }
-
         reader.close();
 
         return users;
     }
 
-    public List<WorkDay> getWorkDays(User user) {
-        throw new UnsupportedOperationException();
+    public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("./Data/workdays/" + user.name + ".csv"));
+        List<WorkDay> workDays = new ArrayList<>();
+
+        while(true) {
+            String line = reader.readLine();
+            if (line == null) {
+                // When reaching EOF, readLine returns null
+                break;
+            }
+            String[] data = line.split(",");
+            
+            WorkDay workDay = new WorkDay(null, null, user);
+        }
     }
 
-    public List<TimeInterval> getTimeIntervals(WorkDay workDay) {
+    public static List<TimeInterval> getTimeIntervals(WorkDay workDay) {
         throw new UnsupportedOperationException();
     }
 

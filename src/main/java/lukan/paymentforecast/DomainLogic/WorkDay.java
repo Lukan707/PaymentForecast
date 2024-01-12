@@ -1,5 +1,6 @@
 package lukan.paymentforecast.DomainLogic;
 
+import java.util.Date;
 import java.util.ArrayList;
 
 /*
@@ -15,8 +16,10 @@ public class WorkDay {
     private SupplementType workdayType;
     private User user;
     private Double salary;
+    private Date date;
 
-    public WorkDay(ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(Date date, ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+        this.date = date;
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
@@ -54,4 +57,6 @@ public class WorkDay {
     }
 
     public Double getSalary() { return salary; }
+
+    public Date getDate() { return date; }
 }
