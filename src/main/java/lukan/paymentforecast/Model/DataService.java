@@ -56,8 +56,22 @@ public class DataService implements DataServiceInterface {
         return workDays;
     }
 
-    public static List<TimeInterval> getTimeIntervals(String filePath) throws FileNotFoundException, IOException {
-        throw new UnsupportedOperationException();
+    public static List<TimeInterval> getTimeIntervals(String fileName) throws FileNotFoundException, IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("./Data/timeIntervals/"+fileName+".csv"));
+        List<TimeInterval> timeIntervals = new ArrayList<>();
+
+        while(true) {
+            String line = reader.readLine();
+            if (line == null) {
+                // When reaching EOF, readLine returns null
+                break;
+            }
+            String[] data = line.split(",");
+            TimeInterval timeInterval = new TimeInterval(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]));
+            timeIntervals.add(timeInterval);
+        }
+        reader.close();
+        return timeIntervals;
     }
 
     public static SupplementType selectSupplementType(String supplement) {
