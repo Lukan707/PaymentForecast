@@ -13,9 +13,13 @@ public class User {
     public ArrayList<Supplement> supplements;
     public ArrayList<WorkDay> workDays;
 
-    public User(Double hourlySalary, ArrayList<Supplement> supplements) {
+    public User(Double hourlySalary) {
         this.hourlySalary = hourlySalary;
-        this.supplements = supplements;
+        this.supplements = new ArrayList<>();
         this.workDays = new ArrayList<>();
+    }
+
+    public void setSupplements(ArrayList<Supplement> supplements) {
+        this.supplements = supplements;
     }
 }
