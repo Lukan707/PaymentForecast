@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,16 +41,12 @@ public class DataService implements DataServiceInterface {
 
         while(true) {
             String line = reader.readLine();
-            if (line == null) {
-                // When reaching EOF, readLine returns null
+            // When reaching EOF, readLine returns null
+            if (line == null)
                 break;
-            }
             String[] data = line.split(",");
-            
-            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);
-            SupplementType supplement = selectSupplementType(data[2]);
-           
-            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, supplement, user);
+            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);           
+            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectSupplementType(data[3]), user);
             workDays.add(workDay);
         }
         reader.close();
@@ -62,10 +59,9 @@ public class DataService implements DataServiceInterface {
 
         while(true) {
             String line = reader.readLine();
-            if (line == null) {
-                // When reaching EOF, readLine returns null
+            // When reaching EOF, readLine returns null
+            if (line == null)
                 break;
-            }
             String[] data = line.split(",");
             TimeInterval timeInterval = new TimeInterval(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]));
             timeIntervals.add(timeInterval);
@@ -78,8 +74,21 @@ public class DataService implements DataServiceInterface {
         return SupplementType.valueOf(supplement);
     }
 
-    public List<Supplement> getSupplements(User user) {
-        throw new UnsupportedOperationException();
+    public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("./data/supplements/" + user.name + ".csv"));
+        List<Supplement> supplements = new ArrayList<>();
+
+        while (true) {
+            String line = reader.readLine();
+            // When reaching EOF, readLine returns null
+            if (line == null)
+                break;
+            String[] data = line.split(";");
+            Supplement supplement = new Supplement(Double.parseDouble(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]), selectSupplementType(data[3]));
+            supplements.add(supplement);
+        }
+        reader.close();
+        return supplements;
     }
 
     public void addUser(User user) {

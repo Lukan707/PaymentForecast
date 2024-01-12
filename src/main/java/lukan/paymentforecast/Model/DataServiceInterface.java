@@ -8,7 +8,7 @@ import lukan.paymentforecast.DomainLogic.*;
 public interface DataServiceInterface {
     public List<User> getUsers() throws FileNotFoundException, IOException;
     public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException;
-    public List<Supplement> getSupplements(User user);
+    public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException;
     public void addUser(User user);
     public void removeUser(User user);
     public void addWorkDay(User user);
