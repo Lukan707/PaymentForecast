@@ -1,6 +1,7 @@
 package lukan.paymentforecast.DomainLogic;
 
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /*
  * This class represent a day where a user is working.
@@ -11,12 +12,14 @@ import java.util.ArrayList;
 */
 public class WorkDay {
 
-    private ArrayList<TimeInterval> timeIntervals;
+    private List<TimeInterval> timeIntervals;
     private SupplementType workdayType;
     private User user;
     private Double salary;
+    private Date date;
 
-    public WorkDay(ArrayList<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+        this.date = date;
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
@@ -37,7 +40,7 @@ public class WorkDay {
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
-                            System.out.println("SupplementType: " + s.supplementType + ", with pay: " + s.supplementPay + " is applied.");
+                            System.out.println("SupplementType: " + s.supplementType + ", with pay: " + s.supplementSalary + " is applied.");
 
                             if (interval.endTimeInSeconds > s.endTimeInSeconds)
                                 supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInSeconds;
@@ -45,13 +48,15 @@ public class WorkDay {
                             if (interval.startTimeInSeconds < s.startTimeInSeconds)
                                 supplementTimeInSeconds -= s.startTimeInSeconds - interval.startTimeInSeconds;
 
-                            salary += s.supplementPay * (supplementTimeInSeconds / 3600.0);
+                            salary += s.supplementSalary * (supplementTimeInSeconds / 3600.0);
                         }
                     }
                 }
             }
         }
     }
-
     public Double getSalary() { return salary; }
+    public Date getDate() { return date; }
+    public User getUser() { return user; }
+    public SupplementType getType() { return workdayType; };
 }
