@@ -24,20 +24,20 @@ public class TestsWorkDay {
         ArrayList<Supplement> supplements = new ArrayList<Supplement>() {{
             // startTime = 18:00, endTime = 23:00
             add(new Supplement(29.0, 64800, 82800, SupplementType.Weekday));
-            // startTime = 23:00, endTime = 23:59
+            // startTime = 23:00, endTime = 23:59:59
             add(new Supplement(38.95, 82800, 86399, SupplementType.Weekday));
-            // StartTime = 00:00, endTime = 06:00
+            // StartTime = 00:00, endTime = 06:00:59
             add(new Supplement(38.95, 0, 21600, SupplementType.Weekday));
-            // startTIme = 15:00, endTime = 23:59
+            // startTIme = 15:00, endTime = 23:59:59
             add(new Supplement(51.0, 54000, 86399, SupplementType.Saturday));
-            // startTime = 00:00, endTime = 23:59
+            // startTime = 00:00, endTime = 23:59:59
             add(new Supplement(58.15, 0, 86399, SupplementType.Sunday));
-            // startTime = 00:00, endTime = 23:59
-            add(new Supplement(38.95, 0, 36399, SupplementType.Holiday));
+            // startTime = 00:00, endTime = 23:59:59
+            add(new Supplement(38.95, 0, 86399, SupplementType.Holiday));
             // has no specified start and end time, should be applied for all hours it is applied
             add(new Supplement(128.83, 0, 86399, SupplementType.Extraordinary));
             // should only be applied one time
-            add(new Supplement(1000.0, 0, 1, SupplementType.Bonus));
+            add(new Supplement(1000.0, 0, 3600, SupplementType.Bonus));
 
         }};
         user.setSupplements(supplements);
@@ -46,22 +46,22 @@ public class TestsWorkDay {
         ArrayList<Supplement> supplements2 = new ArrayList<Supplement>() {{
             // startTime = 18:00, endTime = 23:00
             add(new Supplement(29.0, 64800, 82800, SupplementType.Weekday));
-            // startTime = 23:00, endTime = 23:59
+            // startTime = 23:00, endTime = 23:59:59    
             add(new Supplement(38.95, 82800, 86399, SupplementType.Weekday));
             // StartTime = 00:00, endTime = 06:00
             add(new Supplement(38.95, 0, 21600, SupplementType.Weekday));
-            // startTIme = 15:00, endTime = 23:59
+            // startTIme = 15:00, endTime = 23:59:59
             add(new Supplement(51.0, 54000, 86399, SupplementType.Saturday));
-            // startTime = 00:00, endTime = 23:59
+            // startTime = 00:00, endTime = 23:59:59
             add(new Supplement(58.15, 0, 86399, SupplementType.Sunday));
-            // startTime = 00:00, endTime = 23:59
+            // startTime = 00:00, endTime = 23:59:59
             add(new Supplement(38.95, 0, 36399, SupplementType.Holiday));
             // should always be applied
             add(new Supplement(3.0, 0, 86399, SupplementType.Seniority));
             // has no specified start and end time, should be applied for all hours it is applied
             add(new Supplement(128.83, 0, 86399, SupplementType.Extraordinary));
             // should only be applied one time
-            add(new Supplement(1000.0, 0, 1, SupplementType.Bonus));
+            add(new Supplement(1000.0, 0, 3600, SupplementType.Bonus));
         }};
         user2.setSupplements(supplements2);
     }
@@ -161,8 +161,8 @@ public class TestsWorkDay {
         // Arrange
         ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
             {
-                // startTime = 17:45, endTime = 23:59
-                add(new TimeInterval(63900, 86340, false));
+                // startTime = 17:45, endTime = 23:59:59
+                add(new TimeInterval(63900, 86399, false));
             }
         };
         WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
@@ -171,8 +171,9 @@ public class TestsWorkDay {
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(986.339, workDay.getSalary(), 0.01);
+        assertEquals(989.0909, workDay.getSalary(), 0.01);
     }
+    
 
     @Test
     public void WeekDayWithBreakAndNightSupplementLateHours() {
@@ -183,8 +184,8 @@ public class TestsWorkDay {
                 add(new TimeInterval(57600, 82800, false));
                 // startTime = 23:00, endTime = 23:30
                 add(new TimeInterval(82800, 84600, true));
-                // startTime = 23:30, endTime = 23:59
-                add(new TimeInterval(84600, 86340, false));
+                // startTime = 23:30, endTime = 23:59:59
+                add(new TimeInterval(84600, 86399, false));
             }
         };
         WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
@@ -193,7 +194,7 @@ public class TestsWorkDay {
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(1127.898, workDay.getSalary(), 0.01);
+        assertEquals(1130.65, workDay.getSalary(), 0.01);
     }
 
     @Test
@@ -406,7 +407,7 @@ public class TestsWorkDay {
         // Arrange
         ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
             {
-                // startTime = 17:45, endTime = 23:59
+                // startTime = 17:45, endTime = 23:59:59
                 add(new TimeInterval(63900, 86340, false));
             }
         };
@@ -416,7 +417,7 @@ public class TestsWorkDay {
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(1005.039, workDay.getSalary(), 0.01);
+        assertEquals(1007.791, workDay.getSalary(), 0.01);
     }
 
     @Test
@@ -428,7 +429,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(57600, 82800, false));
                 // startTime = 23:00, endTime = 23:30
                 add(new TimeInterval(82800, 84600, true));
-                // startTime = 23:30, endTime = 23:59
+                // startTime = 23:30, endTime = 23:59:59
                 add(new TimeInterval(84600, 86340, false));
             }
         };
@@ -438,7 +439,7 @@ public class TestsWorkDay {
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(1150.348, workDay.getSalary(), 0.01);
+        assertEquals(1153.1, workDay.getSalary(), 0.01);
     }
 
     @Test
