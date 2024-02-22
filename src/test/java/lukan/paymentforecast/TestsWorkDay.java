@@ -72,6 +72,24 @@ public class TestsWorkDay {
     }
 
     @Test
+    public void WeekDayWithoutBreakAndNoSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 17:45, endTime = 21:15
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(515.32, workDay.getSalary(), 0.01);
+    }
+
+    @Test
     public void WeekDayWithBreakAndNoSupplement() {
         // Arrange
         ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
@@ -337,6 +355,24 @@ public class TestsWorkDay {
 
         // Assert
         assertEquals(922.81, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekDayWithoutBreakWithSenioritySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 17:45, endTime = 21:15
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+        WorkDay workDay = new WorkDay(new Date(), intervals, SupplementType.Weekday, user);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(527.32, workDay.getSalary(), 0.01);
     }
 
     @Test
