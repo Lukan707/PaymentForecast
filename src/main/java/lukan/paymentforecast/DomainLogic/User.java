@@ -1,6 +1,7 @@
 package lukan.paymentforecast.DomainLogic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * This class represent a user.
@@ -11,23 +12,19 @@ public class User {
     
     public String name;
     public Double hourlySalary;
-    public Double senioritySupplment;
-    public ArrayList<Supplement> supplements;
-    public ArrayList<WorkDay> workDays;
+    public Double senioritySupplement;
+    public List<Supplement> supplements;
+    public List<WorkDay> workdays;
 
     public User(String name, Double hourlySalary) {
+        this(name, hourlySalary, new ArrayList<WorkDay>(), new ArrayList<Supplement>(), 0.0);
+    }
+
+    public User(String name, Double hourlySalary, List<WorkDay> workdays, List<Supplement> supplements, Double senioritySupplement) {
         this.name = name;
         this.hourlySalary = hourlySalary;
-        this.supplements = new ArrayList<>();
-        this.workDays = new ArrayList<>();
-        this.senioritySupplment = 0.0;
-    }
-
-    public void setSupplements(ArrayList<Supplement> supplements) {
         this.supplements = supplements;
-    }
-
-    public void setSenioritySupplement(Double senioritySupplement) {
-        this.senioritySupplment = senioritySupplement;
+        this.workdays = workdays;
+        this.senioritySupplement = senioritySupplement;
     }
 }

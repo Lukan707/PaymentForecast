@@ -21,30 +21,16 @@ public class WorkDay {
     private List<SupplementType> supplements;
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user) {
-        this.date = date;
-        this.timeIntervals = timeIntervals;
-        this.workdayType = workdayType;
-        this.user = user;
-        this.salary = 0.0;
-        this.supplements = new ArrayList<SupplementType>();
+        this(date, timeIntervals, workdayType, user, new ArrayList<SupplementType>(), 0.0);
+        System.out.println(timeIntervals.size());
     }
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements) {
-        this.date = date;
-        this.timeIntervals = timeIntervals;
-        this.workdayType = workdayType;
-        this.user = user;
-        this.salary = 0.0;
-        this.supplements = supplements;
+        this(date, timeIntervals, workdayType, user, supplements, 0.0);
     }
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, Double bonus) {
-        this.date = date;
-        this.timeIntervals = timeIntervals;
-        this.workdayType = workdayType;
-        this.user = user;
-        this.salary = bonus;
-        this.supplements = new ArrayList<SupplementType>();
+        this(date, timeIntervals, workdayType, user, new ArrayList<SupplementType>(), bonus);
     }
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements, Double bonus) {
@@ -62,7 +48,7 @@ public class WorkDay {
             
             if (!interval.isBreak) {
                 
-                salary += (user.hourlySalary + user.senioritySupplment) * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
+                salary += (user.hourlySalary + user.senioritySupplement) * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
         
                 for (Supplement s : user.supplements) {
                     if (s.supplementType.label.equals(workdayType.label) || this.supplements.contains(s.supplementType)) {

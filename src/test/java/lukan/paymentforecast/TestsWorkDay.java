@@ -41,7 +41,7 @@ public class TestsWorkDay {
 
 
         }};
-        user.setSupplements(supplements);
+        user.supplements = supplements;
 
         user2 = new User("test", 128.83);
         ArrayList<Supplement> supplements2 = new ArrayList<Supplement>() {{
@@ -60,8 +60,8 @@ public class TestsWorkDay {
             // has no specified start and end time, should be applied for all hours it is applied
             add(new Supplement(128.83, 0, 86399, SupplementType.Extraordinary));
         }};
-        user2.setSupplements(supplements2);
-        user2.setSenioritySupplement(3.0);
+        user2.supplements = supplements2;
+        user2.senioritySupplement = 3.0;
     }
 
     @AfterEach
