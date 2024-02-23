@@ -2,6 +2,8 @@ package lukan.paymentforecast.DomainLogic;
 
 /* 
  * This enum represent the type of supplement
+ * 
+ * Some SupplementTypes is equal to WorkDayType enums.
 */
 public enum SupplementType {
     Weekday("Weekday"),

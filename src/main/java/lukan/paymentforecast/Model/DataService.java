@@ -22,13 +22,22 @@ import lukan.paymentforecast.DomainLogic.*;
  *      - users/
  *      - workdays/
  *      - timeintervals/
- *      - supplements/
+ *      - userSupplements/
+ *      - workdaySupplements/
+ *
+ * Data filenames:
+ * - user files: ""
+ * - workday files: "{userName}.csv"
+ * - timeInterval files: "{userName}{date}.csv"
+ * - userSupplements files: ""
+ * - workdaySupplements files: ""
  * 
  * Data formats:
  * - user files: username,hourly salary (double)
- * - workday files: date(long),supplement type(SupplementType)
+ * - workday files: date(long),workday type(WorkDayType),bonus
  * - timeInterval files: start time in seconds(int), end time in seconds(int), is a break(boolean)
- * - supplement files: supplemnt salary(double), start time in seconds(int), end time in seconds(int), supplement type(Supplement Type)
+ * - userSupplement files: supplemnt salary(double), start time in seconds(int), end time in seconds(int), supplement type(Supplement Type)
+ * - workdaySupplements files: supplement type(SupplementType)
  */ 
 public class DataService implements DataServiceInterface {
     
@@ -51,24 +60,25 @@ public class DataService implements DataServiceInterface {
         return users;
     }
 
-    // public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException {
-    //     BufferedReader reader = new BufferedReader(new FileReader("./Data/workdays/" + user.name + ".csv"));
-    //     List<WorkDay> workDays = new ArrayList<>();
-    //     String line = "";
+    public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("./Data/workdays/" + user.name + ".csv"));
+        List<WorkDay> workDays = new ArrayList<>();
+        String line = "";
 
-    //     while(true) {
-    //         line = reader.readLine();
-    //         // When reaching EOF, readLine returns null
-    //         if (line == null)
-    //             break;
-    //         String[] data = line.trim().split(",");
-    //         List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);           
-    //         WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectSupplementType(data[1]), user);
-    //         workDays.add(workDay);
-    //     }
-    //     reader.close();
-    //     return workDays;
-    // }
+        while(true) {
+            line = reader.readLine();
+            // When reaching EOF, readLine returns null
+            if (line == null)
+                break;
+            String[] data = line.trim().split(",");
+            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);   
+            List<SupplementType> supplementTypes = getSupplementTypes();  
+            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectWorkDayType(data[1]), user, supplementTypes, Double.parseDouble(data[2]));
+            workDays.add(workDay);
+        }
+        reader.close();
+        return workDays;
+    }
 
     public static List<TimeInterval> getTimeIntervals(String fileName) throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/timeintervals/"+fileName+".csv"));
@@ -88,8 +98,14 @@ public class DataService implements DataServiceInterface {
         return timeIntervals;
     }
 
-    public static SupplementType selectSupplementType(String supplement) {
-        return SupplementType.valueOf(supplement);
+    public static WorkDayType selectWorkDayType(String workdayType) {
+        return WorkDayType.valueOf(workdayType);
+    }
+
+    public static List<SupplementType> getSupplementTypes() {
+        List<SupplementType> supplementTypes = new ArrayList<>();
+        // Implement function that reads from the workDaysupplements file
+        return supplementTypes;
     }
 
     public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException {
@@ -108,6 +124,10 @@ public class DataService implements DataServiceInterface {
         }
         reader.close();
         return supplements;
+    }
+
+    public static SupplementType selectSupplementType(String supplementType) {
+        return SupplementType.valueOf(supplementType);
     }
 
     private void appendToFile(String filePath, String line) throws IOException {
