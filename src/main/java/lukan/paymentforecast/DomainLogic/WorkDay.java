@@ -1,5 +1,6 @@
 package lukan.paymentforecast.DomainLogic;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class WorkDay {
     private User user;
     private Double salary;
     private Date date;
+    private List<SupplementType> supplements;
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user) {
         this.date = date;
@@ -24,6 +26,34 @@ public class WorkDay {
         this.workdayType = workdayType;
         this.user = user;
         this.salary = 0.0;
+        this.supplements = new ArrayList<SupplementType>();
+    }
+
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements) {
+        this.date = date;
+        this.timeIntervals = timeIntervals;
+        this.workdayType = workdayType;
+        this.user = user;
+        this.salary = 0.0;
+        this.supplements = supplements;
+    }
+
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, Double bonus) {
+        this.date = date;
+        this.timeIntervals = timeIntervals;
+        this.workdayType = workdayType;
+        this.user = user;
+        this.salary = bonus;
+        this.supplements = new ArrayList<SupplementType>();
+    }
+
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements, Double bonus) {
+        this.date = date;
+        this.timeIntervals = timeIntervals;
+        this.workdayType = workdayType;
+        this.user = user;
+        this.salary = bonus;
+        this.supplements = supplements;
     }
 
     public void calculateSalary() {
@@ -32,10 +62,10 @@ public class WorkDay {
             
             if (!interval.isBreak) {
                 
-                salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
+                salary += (user.hourlySalary + user.senioritySupplment) * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
         
                 for (Supplement s : user.supplements) {
-                    if (s.supplementType.label.equals(workdayType.label)) {
+                    if (s.supplementType.label.equals(workdayType.label) || this.supplements.contains(s.supplementType)) {
 
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;

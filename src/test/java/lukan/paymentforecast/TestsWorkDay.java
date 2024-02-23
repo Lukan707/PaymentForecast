@@ -2,6 +2,7 @@ package lukan.paymentforecast;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,8 +38,7 @@ public class TestsWorkDay {
             add(new Supplement(38.95, 0, 86399, SupplementType.Holiday));
             // has no specified start and end time, should be applied for all hours it is applied
             add(new Supplement(128.83, 0, 86399, SupplementType.Extraordinary));
-            // should only be applied one time
-            add(new Supplement(1000.0, 0, 3600, SupplementType.Bonus));
+
 
         }};
         user.setSupplements(supplements);
@@ -56,15 +56,12 @@ public class TestsWorkDay {
             // startTime = 00:00, endTime = 23:59:59
             add(new Supplement(58.15, 0, 86399, SupplementType.Sunday));
             // startTime = 00:00, endTime = 23:59:59
-            add(new Supplement(38.95, 0, 36399, SupplementType.Holiday));
-            // should always be applied
-            add(new Supplement(3.0, 0, 86399, SupplementType.Seniority));
+            add(new Supplement(38.95, 0, 86399, SupplementType.Holiday));
             // has no specified start and end time, should be applied for all hours it is applied
             add(new Supplement(128.83, 0, 86399, SupplementType.Extraordinary));
-            // should only be applied one time
-            add(new Supplement(1000.0, 0, 3600, SupplementType.Bonus));
         }};
         user2.setSupplements(supplements2);
+        user2.setSenioritySupplement(3.0);
     }
 
     @AfterEach
@@ -368,7 +365,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(43200, 57600, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -386,7 +383,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(63900, 76500, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -408,7 +405,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(66600, 76500, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -424,16 +421,16 @@ public class TestsWorkDay {
         ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
             {
                 // startTime = 17:45, endTime = 23:59:59
-                add(new TimeInterval(63900, 86340, false));
+                add(new TimeInterval(63900, 86399, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(1007.791, workDay.getSalary(), 0.01);
+        assertEquals(1007.84, workDay.getSalary(), 0.01);
     }
 
     @Test
@@ -446,16 +443,16 @@ public class TestsWorkDay {
                 // startTime = 23:00, endTime = 23:30
                 add(new TimeInterval(82800, 84600, true));
                 // startTime = 23:30, endTime = 23:59:59
-                add(new TimeInterval(84600, 86340, false));
+                add(new TimeInterval(84600, 86399, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
 
         // Assert
-        assertEquals(1153.1, workDay.getSalary(), 0.01);
+        assertEquals(1153.153, workDay.getSalary(), 0.01);
     }
 
     @Test
@@ -467,7 +464,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(14400, 50400, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -489,7 +486,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(21600, 36000, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -507,7 +504,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(43200, 72000, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -529,7 +526,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(59400, 72000, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -547,7 +544,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(46800, 75600, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -569,7 +566,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(63000, 75600, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -591,7 +588,7 @@ public class TestsWorkDay {
                 add(new TimeInterval(69300, 76500, false));
             }
         };
-        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user);
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user2);
 
         // Act
         workDay.calculateSalary();
@@ -601,7 +598,7 @@ public class TestsWorkDay {
     }
     
     @Test
-    public void WeekDayWithoutBreakAndHolidaySupplement() {
+    public void HoliayWithoutBreakWithHolidaySupplement() {
         // Arrange
         ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
             {
@@ -617,22 +614,270 @@ public class TestsWorkDay {
         // Assert
         assertEquals(671.12, workDay.getSalary(), 0.01);
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // @Test
-    // public void WeekDayWithoutBreakWithHolidayAndSenioritySupplement() {
-    //     // Arrange
-    //     ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
-    //         {
-    //             // startTime = 14:00, endTime = 16:00
-    //             add(new TimeInterval(43200, 57600, false));
-    //         }
-    //     };
-    //     WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Holiday, user);
 
-    //     // Act
-    //     workDay.calculateSalary();
+    @Test
+    public void HolidayDayWithoutBreakWithHolidayAndSenioritySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Holiday, user2);
 
-    //     // Assert
-    //     assertEquals(671.12, workDay.getSalary(), 0.01);
-    // }
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(683.12, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekdayWithoutBreakWithBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1515.32, workDay.getSalary(), 0.01);
+    }
+
+    @Test 
+    public void WeekdayWithBreakAndBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 10:00, endTime = 12:00
+                add(new TimeInterval(36000, 43200, false));
+                // startTime = 12:00, endTime = 14:00
+                add(new TimeInterval(43200, 50400, true));
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(50400, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1515.32, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekdayWithBreakSeniorityAndBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 10:00, endTime = 12:00
+                add(new TimeInterval(36000, 43200, false));
+                // startTime = 12:00, endTime = 14:00
+                add(new TimeInterval(43200, 50400, true));
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(50400, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user2, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1527.32, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void SaturdayWithBreakSaturdayAndBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 10:00, endTime = 12:00
+                add(new TimeInterval(36000, 43200, false));
+                // startTime = 12:00, endTime = 14:00
+                add(new TimeInterval(43200, 50400, true));
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(50400, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1566.32, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void SundayWithBreakSundayAndBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 10:00, endTime = 12:00
+                add(new TimeInterval(36000, 43200, false));
+                // startTime = 12:00, endTime = 14:00
+                add(new TimeInterval(43200, 50400, true));
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(50400, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1747.92, workDay.getSalary(), 0.01);
+    }
+
+    @Test 
+    public void HolidayWithoutBreakWithHolidayAndBonusSupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Holiday, user, 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1671.12, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekdayWithoutBreakWithExtraodinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user, List.of(SupplementType.Extraordinary));
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1030.64, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekdayWithBreakWithExtraodinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 10:00, endTime = 12:00
+                add(new TimeInterval(36000, 43200, false));
+                // startTime = 12:00, endTime = 14:00
+                add(new TimeInterval(43200, 50400, true));
+                // startTime = 14:00, endTime = 16:00
+                add(new TimeInterval(50400, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user, List.of(SupplementType.Extraordinary));
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1030.64, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void SaturdayWithoutBreakWithSaturdayAndExtraordinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Saturday, user, List.of(SupplementType.Extraordinary));
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1081.64, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void SundayWithoutBreakWithSundayAndExtraordinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Sunday, user, List.of(SupplementType.Extraordinary));
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1263.24, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void HolidayWithoutBreakWithHolidayAndExtraordinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Holiday, user, List.of(SupplementType.Extraordinary));
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(1186.44, workDay.getSalary(), 0.01);
+    }
+
+    @Test
+    public void WeekDayWithoutBreakWithBonusAndExtraordinarySupplement() {
+        // Arrange
+        ArrayList<TimeInterval> intervals = new ArrayList<TimeInterval>() {
+            {
+                // startTime = 12:00, endTime = 16:00
+                add(new TimeInterval(43200, 57600, false));
+            }
+        };
+
+        WorkDay workDay = new WorkDay(new Date(), intervals, WorkDayType.Weekday, user, List.of(SupplementType.Extraordinary), 1000.0);
+
+        // Act
+        workDay.calculateSalary();
+
+        // Assert
+        assertEquals(2030.64, workDay.getSalary(), 0.01);
+    }
 }

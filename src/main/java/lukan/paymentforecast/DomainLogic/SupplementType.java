@@ -8,8 +8,6 @@ public enum SupplementType {
     Saturday("Saturday"),
     Sunday("Sunday"),
     Holiday("Holiday"),
-    Seniority("Seniority"),
-    Bonus("Bonus"),
     Extraordinary("Extraordinary");
 
     public final String label;
