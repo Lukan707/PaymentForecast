@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="lukan.paymentforecast.TestsWorkDay" time="0.06" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="lukan.paymentforecast.TestsWorkDay" time="0.092" tests="28" errors="1" skipped="0" failures="12">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\lukas\AppData\Local\Temp\surefire11447126122020644208\surefirebooter-20240222172001087_3.jar C:\Users\lukas\AppData\Local\Temp\surefire11447126122020644208 2024-02-22T17-20-00_917-jvmRun1 surefire-20240222172001087_1tmp surefire_0-20240222172001087_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\lukas\AppData\Local\Temp\surefire7560294447354939531\surefirebooter-20240223110551039_3.jar C:\Users\lukas\AppData\Local\Temp\surefire7560294447354939531 2024-02-23T11-05-50_894-jvmRun1 surefire-20240223110551039_1tmp surefire_0-20240223110551039_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\lukas\Documents\Projects\PaymentForecast\target\test-classes;C:\Users\lukas\Documents\Projects\PaymentForecast\target\classes;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\lukas\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\lukas\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\lukas\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\lukas\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\lukas\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\lukas\AppData\Local\Temp\surefire11447126122020644208\surefirebooter-20240222172001087_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\lukas\AppData\Local\Temp\surefire7560294447354939531\surefirebooter-20240223110551039_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -60,52 +60,265 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="SaturdatWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.025">
-    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
-SupplementType: Saturday, with pay: 51.0 is applied.
-]]></system-out>
-  </testcase>
-  <testcase name="WeekDayWithoutBreakAndNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="WeekDayWithBreakWithNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.016">
     <system-out><![CDATA[SupplementType: Weekday, with pay: 38.95 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="SaturdayWithoutBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.004">
-    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
+  <testcase name="WeekDayWithBreakNightAndSenioritySupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.008">
+    <failure message="expected: &lt;783.49&gt; but was: &lt;766.99&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <783.49> but was: <766.99>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithBreakNightAndSenioritySupplementEarlyHours(TestsWorkDay.java:498)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 38.95 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithoutBreakAndEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="WeekDayWithoutBreakWithEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
     <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithBreakAndNoSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0"/>
-  <testcase name="SundayWithoutBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
-    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+  <testcase name="WeekDayWithBreakEveningAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;969.6025&gt; but was: &lt;949.3525000000001&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <969.6025> but was: <949.3525000000001>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithBreakEveningAndSenioritySupplement(TestsWorkDay.java:417)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="SaturdayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
-    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
-SupplementType: Sunday, with pay: 58.15 is applied.
+  <testcase name="SaturdayWithoutBreakWithSundayAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <failure message="expected: &lt;1309.64&gt; but was: &lt;1285.64&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1309.64> but was: <1285.64>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.SaturdayWithoutBreakWithSundayAndSenioritySupplement(TestsWorkDay.java:516)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithBreakAndNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="WeekDayWithoutBreakWithEveningAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;555.66&gt; but was: &lt;545.155&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <555.66> but was: <545.155>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithoutBreakWithEveningAndSenioritySupplement(TestsWorkDay.java:395)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithBreakNightAndSenioritySupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <failure message="expected: &lt;1153.1&gt; but was: &lt;1127.9036666666666&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1153.1> but was: <1127.9036666666666>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithBreakNightAndSenioritySupplementLateHours(TestsWorkDay.java:458)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
     <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
 SupplementType: Weekday, with pay: 38.95 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="SundayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="WeekDayWithBreakAndNoSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.003"/>
+  <testcase name="WeekDayWithoutBreakWithNightAndSenioritySupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <failure message="expected: &lt;1396.2&gt; but was: &lt;1366.2000000000003&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1396.2> but was: <1366.2000000000003>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithoutBreakWithNightAndSenioritySupplementEarlyHours(TestsWorkDay.java:476)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakWithNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakWithHolidayAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.003">
+    <system-out><![CDATA[SupplementType: Holiday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakWithNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
+SupplementType: Weekday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="SaturdayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
+SupplementType: Saturday, with pay: 51.0 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="SundayWithoutBreakWithSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakWithSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;527.32&gt; but was: &lt;515.32&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <527.32> but was: <515.32>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithoutBreakWithSenioritySupplement(TestsWorkDay.java:377)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakAndHolidaySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Holiday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="SaturdayWithBreakAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <failure message="expected: &lt;1044.89&gt; but was: &lt;1028.39&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1044.89> but was: <1028.39>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.SaturdayWithBreakAndSenioritySupplement(TestsWorkDay.java:538)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
     <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
 SupplementType: Sunday, with pay: 58.15 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithBreakAndEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="SundayWithBreakSundayAndSenioritySupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;731.32&gt; but was: &lt;719.32&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <731.32> but was: <719.32>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.SundayWithBreakSundayAndSenioritySupplementLateHours(TestsWorkDay.java:600)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
+SupplementType: Saturday, with pay: 51.0 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="SundayWithBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+SupplementType: Sunday, with pay: 58.15 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="SaturdayWithoutBreakWithSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Saturday, with pay: 51.0 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakAndSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.005"/>
+  <testcase name="SundayWithoutBreakWithSundayAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
+    <failure message="expected: &lt;1519.84&gt; but was: &lt;1495.8400000000001&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1519.84> but was: <1495.8400000000001>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.SundayWithoutBreakWithSundayAndSenioritySupplement(TestsWorkDay.java:556)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithBreakAndEveningSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
     <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithBreakAndNightSupplementEarlyHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
-    <system-out><![CDATA[SupplementType: Weekday, with pay: 38.95 is applied.
+  <testcase name="WeekDayWithBreakAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <error message="Cannot read field &quot;hourlySalary&quot; because &quot;this.user&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read field "hourlySalary" because "this.user" is null
+	at lukan.paymentforecast.DomainLogic.WorkDay.calculateSalary(WorkDay.java:35)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithBreakAndSenioritySupplement(TestsWorkDay.java:356)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+  </testcase>
+  <testcase name="SaturdayWithBreakSupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+SupplementType: Sunday, with pay: 58.15 is applied.
 ]]></system-out>
   </testcase>
-  <testcase name="WeekDayWithoutBreakAndNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.0">
+  <testcase name="SundayWithBreakSundayAndSenioritySupplement" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;1424.85&gt; but was: &lt;1402.3500000000001&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1424.85> but was: <1402.3500000000001>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.SundayWithBreakSundayAndSenioritySupplement(TestsWorkDay.java:578)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Sunday, with pay: 58.15 is applied.
+SupplementType: Sunday, with pay: 58.15 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithoutBreakWithNightAndSenioritySupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.001">
+    <failure message="expected: &lt;1007.791&gt; but was: &lt;986.3411666666667&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1007.791> but was: <986.3411666666667>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at lukan.paymentforecast.TestsWorkDay.WeekDayWithoutBreakWithNightAndSenioritySupplementLateHours(TestsWorkDay.java:436)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
+SupplementType: Weekday, with pay: 38.95 is applied.
+]]></system-out>
+  </testcase>
+  <testcase name="WeekDayWithBreakWithNightSupplementLateHours" classname="lukan.paymentforecast.TestsWorkDay" time="0.002">
     <system-out><![CDATA[SupplementType: Weekday, with pay: 29.0 is applied.
 SupplementType: Weekday, with pay: 38.95 is applied.
 ]]></system-out>

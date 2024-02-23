@@ -13,12 +13,12 @@ import java.util.List;
 public class WorkDay {
 
     private List<TimeInterval> timeIntervals;
-    private SupplementType workdayType;
+    private WorkDayType workdayType;
     private User user;
     private Double salary;
     private Date date;
 
-    public WorkDay(Date date, List<TimeInterval> timeIntervals, SupplementType workdayType, User user) {
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user) {
         this.date = date;
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
@@ -35,7 +35,7 @@ public class WorkDay {
                 salary += user.hourlySalary * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
         
                 for (Supplement s : user.supplements) {
-                    if (s.supplementType.equals(workdayType)) {
+                    if (s.supplementType.label.equals(workdayType.label)) {
 
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
@@ -58,5 +58,5 @@ public class WorkDay {
     public Double getSalary() { return salary; }
     public Date getDate() { return date; }
     public User getUser() { return user; }
-    public SupplementType getType() { return workdayType; };
+    public WorkDayType getType() { return workdayType; };
 }

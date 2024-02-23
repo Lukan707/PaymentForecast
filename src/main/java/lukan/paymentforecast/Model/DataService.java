@@ -51,24 +51,24 @@ public class DataService implements DataServiceInterface {
         return users;
     }
 
-    public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("./Data/workdays/" + user.name + ".csv"));
-        List<WorkDay> workDays = new ArrayList<>();
-        String line = "";
+    // public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException {
+    //     BufferedReader reader = new BufferedReader(new FileReader("./Data/workdays/" + user.name + ".csv"));
+    //     List<WorkDay> workDays = new ArrayList<>();
+    //     String line = "";
 
-        while(true) {
-            line = reader.readLine();
-            // When reaching EOF, readLine returns null
-            if (line == null)
-                break;
-            String[] data = line.trim().split(",");
-            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);           
-            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectSupplementType(data[1]), user);
-            workDays.add(workDay);
-        }
-        reader.close();
-        return workDays;
-    }
+    //     while(true) {
+    //         line = reader.readLine();
+    //         // When reaching EOF, readLine returns null
+    //         if (line == null)
+    //             break;
+    //         String[] data = line.trim().split(",");
+    //         List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);           
+    //         WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectSupplementType(data[1]), user);
+    //         workDays.add(workDay);
+    //     }
+    //     reader.close();
+    //     return workDays;
+    // }
 
     public static List<TimeInterval> getTimeIntervals(String fileName) throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/timeintervals/"+fileName+".csv"));
