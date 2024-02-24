@@ -48,22 +48,27 @@ public class WorkDay {
             
             if (!interval.isBreak) {
                 
+                // Applying every interval, that isn't a break, using the salary and if 0< sentiority supplement times the interval in hours (converted from seconds)
                 salary += (user.hourlySalary + user.senioritySupplement) * ((interval.endTimeInSeconds - interval.startTimeInSeconds) / 3600.0); 
-        
+                
                 for (Supplement s : user.supplements) {
+                    
+                    // Applying the supplement given the parameters (pay, start- and end-time) if it matches the current type of day, or is specified in the workday
                     if (s.supplementType.label.equals(workdayType.label) || this.supplements.contains(s.supplementType)) {
 
+                        // if the current interval ends after the supplement starts and the interval starts before the supplement ends the supplement is applied further
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
-                            System.out.println("SupplementType: " + s.supplementType + ", with pay: " + s.supplementSalary + " is applied.");
-
+                            // If the interval ends before the specified end time of the supplement, the last unused hours of the supplement is subtracted
                             if (interval.endTimeInSeconds > s.endTimeInSeconds)
                                 supplementTimeInSeconds -= interval.endTimeInSeconds - s.endTimeInSeconds;
 
+                            // If the interval starts after the specified start time of the supplement, the first unused hours of the supplement is subtracted
                             if (interval.startTimeInSeconds < s.startTimeInSeconds)
                                 supplementTimeInSeconds -= s.startTimeInSeconds - interval.startTimeInSeconds;
 
+                            // Apply the used time of the supplement in hours times the supplement salary to the salary of the workday
                             salary += s.supplementSalary * (supplementTimeInSeconds / 3600.0);
                         }
                     }
