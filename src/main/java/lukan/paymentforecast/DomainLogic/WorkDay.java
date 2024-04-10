@@ -22,7 +22,6 @@ public class WorkDay {
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user) {
         this(date, timeIntervals, workdayType, user, new ArrayList<SupplementType>(), 0.0);
-        System.out.println(timeIntervals.size());
     }
 
     public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements) {
