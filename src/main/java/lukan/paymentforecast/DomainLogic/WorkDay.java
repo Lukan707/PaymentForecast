@@ -56,7 +56,7 @@ public class WorkDay {
                     // Applying the supplement given the parameters (pay, start- and end-time) if it matches the current type of day, or is specified in the workday
                     if (s.supplementType.label.equals(workdayType.label) || this.supplements.contains(s.supplementType)) {
 
-                        // if the current interval ends after the supplement starts and the interval starts before the supplement ends the supplement is applied further
+                        // If the current interval ends after the supplement starts and the interval starts before the supplement ends the supplement is applied further
                         if (interval.endTimeInSeconds > s.startTimeInSeconds && interval.startTimeInSeconds < s.endTimeInSeconds) {
                             int supplementTimeInSeconds = interval.endTimeInSeconds - interval.startTimeInSeconds;
                             
