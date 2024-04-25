@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import lukan.paymentforecast.DomainLogic.*;
+import lukan.paymentforecast.Domain.*;
 
 /*
  * This class is an implementation of the DataService interface.
@@ -26,11 +26,8 @@ import lukan.paymentforecast.DomainLogic.*;
  *      - workdaySupplements/
  *
  * Data filenames:
- * - user files: ""
  * - workday files: "{userName}.csv"
  * - timeInterval files: "{userName}{date}.csv"
- * - userSupplements files: ""
- * - workdaySupplements files: ""
  * 
  * Data formats:
  * - user files: username,hourly salary (double)
@@ -98,7 +95,7 @@ public class DataService implements DataServiceInterface {
         return timeIntervals;
     }
 
-    public static WorkDayType selectWorkDayType(String workdayType) {
+    private static WorkDayType selectWorkDayType(String workdayType) {
         return WorkDayType.valueOf(workdayType);
     }
 

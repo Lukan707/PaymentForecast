@@ -1,8 +1,9 @@
 package lukan.paymentforecast;
 
-import lukan.paymentforecast.DomainLogic.*;
-
 import org.junit.jupiter.api.Test;
+
+import lukan.paymentforecast.Domain.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
@@ -13,7 +14,7 @@ public class TestsTimeFormatAdapter {
     @Test
     public void TimeformatToSeconds_1600() {
         // Act
-        int actual = TimeFormatAdapter.timeformatToSeconds("16:00");
+        int actual = TimeFormatParser.timeformatToSeconds("16:00");
 
         // Assert
         assertEquals(57600, actual);
@@ -22,7 +23,7 @@ public class TestsTimeFormatAdapter {
     @Test
     public void TimeFormatToSeconds_2015() {
         // Act
-        int actual = TimeFormatAdapter.timeformatToSeconds("20:15");
+        int actual = TimeFormatParser.timeformatToSeconds("20:15");
 
         // Assert
         assertEquals(72900, actual);
@@ -31,7 +32,7 @@ public class TestsTimeFormatAdapter {
     @Test
     public void TimeFormatToSeconds_2130() {
         // Act
-        int actual = TimeFormatAdapter.timeformatToSeconds("21:30");
+        int actual = TimeFormatParser.timeformatToSeconds("21:30");
 
         // Assert
         assertEquals(77400, actual);
@@ -40,7 +41,7 @@ public class TestsTimeFormatAdapter {
     @Test
     public void TimeformatToSeconds_2229() {
         // Act
-        int actual = TimeFormatAdapter.timeformatToSeconds("22:29");
+        int actual = TimeFormatParser.timeformatToSeconds("22:29");
 
         // Assert
         assertEquals(80940, actual);
@@ -50,7 +51,7 @@ public class TestsTimeFormatAdapter {
     @Test
     public void TimeformatToSeconds_2359() {
         // Act
-        int actual = TimeFormatAdapter.timeformatToSeconds("23:59");
+        int actual = TimeFormatParser.timeformatToSeconds("23:59");
 
         // Assert
         assertEquals(86340, actual);

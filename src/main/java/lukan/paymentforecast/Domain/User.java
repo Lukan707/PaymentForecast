@@ -1,4 +1,4 @@
-package lukan.paymentforecast.DomainLogic;
+package lukan.paymentforecast.Domain;
 
 import java.util.ArrayList;
 import java.util.List;

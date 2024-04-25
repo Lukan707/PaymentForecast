@@ -7,9 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import lukan.paymentforecast.DomainLogic.*;
+import lukan.paymentforecast.Domain.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
  * This class contains Unit tets for the Workday class.
