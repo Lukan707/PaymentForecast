@@ -95,7 +95,7 @@ public class DataService implements DataServiceInterface {
         return timeIntervals;
     }
 
-    private static WorkDayType selectWorkDayType(String workdayType) {
+    public static WorkDayType selectWorkDayType(String workdayType) {
         return WorkDayType.valueOf(workdayType);
     }
 
