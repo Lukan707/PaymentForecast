@@ -1,4 +1,4 @@
-package lukan.paymentforecast;
+package lukan.paymentforecast.Domain;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,8 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import lukan.paymentforecast.Domain.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

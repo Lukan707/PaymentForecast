@@ -1,8 +1,6 @@
-package lukan.paymentforecast;
+package lukan.paymentforecast.Domain;
 
 import org.junit.jupiter.api.Test;
-
-import lukan.paymentforecast.Domain.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

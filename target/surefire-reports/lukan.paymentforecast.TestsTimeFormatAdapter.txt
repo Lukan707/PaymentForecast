@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: lukan.paymentforecast.TestsTimeFormatAdapter
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s -- in lukan.paymentforecast.TestsTimeFormatAdapter
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s -- in lukan.paymentforecast.TestsTimeFormatAdapter

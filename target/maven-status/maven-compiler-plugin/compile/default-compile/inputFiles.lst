@@ -1,10 +1,10 @@
 C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\App.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\Supplement.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\SupplementType.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\TimeFormatAdapter.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\TimeInterval.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\User.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\WorkDay.java
-C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\DomainLogic\WorkDayType.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\Supplement.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\SupplementType.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\TimeFormatParser.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\TimeInterval.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\User.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\WorkDay.java
+C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Domain\WorkDayType.java
 C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Model\DataService.java
 C:\Users\lukas\Documents\Projects\PaymentForecast\src\main\java\lukan\paymentforecast\Model\DataServiceInterface.java
