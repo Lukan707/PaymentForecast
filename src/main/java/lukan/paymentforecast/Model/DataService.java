@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import lukan.paymentforecast.DomainLogic.*;
+import lukan.paymentforecast.Domain.*;
 
 /*
  * This class is an implementation of the DataService interface.
@@ -22,13 +22,20 @@ import lukan.paymentforecast.DomainLogic.*;
  *      - users/
  *      - workdays/
  *      - timeintervals/
- *      - supplements/
+ *      - userSupplements/
+ *      - workdaySupplementTypes/
+ *
+ * Data filenames:
+ * - workday files: "{userName}.csv"
+ * - timeInterval files: "{userName}{date}.csv"
+ * - workdaySupplementTypes files: "{date}.csv"
  * 
  * Data formats:
  * - user files: username,hourly salary (double)
- * - workday files: date(long),supplement type(SupplementType)
+ * - workday files: date(long),workday type(WorkDayType),bonus
  * - timeInterval files: start time in seconds(int), end time in seconds(int), is a break(boolean)
- * - supplement files: supplemnt salary(double), start time in seconds(int), end time in seconds(int), supplement type(Supplement Type)
+ * - userSupplement files: supplemnt salary(double), start time in seconds(int), end time in seconds(int), supplement type(Supplement Type)
+ * - workdaySupplementTypes files: supplement type(SupplementType)
  */ 
 public class DataService implements DataServiceInterface {
     
@@ -62,8 +69,9 @@ public class DataService implements DataServiceInterface {
             if (line == null)
                 break;
             String[] data = line.trim().split(",");
-            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);           
-            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectSupplementType(data[1]), user);
+            List<TimeInterval> timeIntervals = getTimeIntervals(user.name + data[0]);   
+            List<SupplementType> supplementTypes = getSupplementTypes(data[0]);  
+            WorkDay workDay = new WorkDay(new Date(Long.parseLong(data[0])), timeIntervals, selectWorkDayType(data[1]), user, supplementTypes, Double.parseDouble(data[2]));
             workDays.add(workDay);
         }
         reader.close();
@@ -88,8 +96,25 @@ public class DataService implements DataServiceInterface {
         return timeIntervals;
     }
 
-    public static SupplementType selectSupplementType(String supplement) {
-        return SupplementType.valueOf(supplement);
+    public static WorkDayType selectWorkDayType(String workdayType) {
+        return WorkDayType.valueOf(workdayType);
+    }
+
+    public static List<SupplementType> getSupplementTypes(String date) throws FileNotFoundException, IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("./data/workdaySupplementTypes/" + date + ".csv"));
+        List<SupplementType> supplementTypes = new ArrayList<>();
+        String line = "";
+
+        while(true) {
+            line = reader.readLine();
+            // When reaching EOF, readLine returns null
+            if (line == null)
+                break;
+            supplementTypes.add(selectSupplementType(line.trim()));
+        }
+
+        reader.close();
+        return supplementTypes;
     }
 
     public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException {
@@ -97,7 +122,7 @@ public class DataService implements DataServiceInterface {
         List<Supplement> supplements = new ArrayList<>();
         String line = "";
 
-        while (true) {
+        while(true) {
             line = reader.readLine();
             // When reaching EOF, readLine returns null
             if (line == null)
@@ -108,6 +133,10 @@ public class DataService implements DataServiceInterface {
         }
         reader.close();
         return supplements;
+    }
+
+    public static SupplementType selectSupplementType(String supplementType) {
+        return SupplementType.valueOf(supplementType);
     }
 
     private void appendToFile(String filePath, String line) throws IOException {
@@ -176,7 +205,15 @@ public class DataService implements DataServiceInterface {
         appendToFile("./Data/supplements/" + user.name + ".csv", supplement.supplementSalary + "," + supplement.startTimeInSeconds + "," + supplement.endTimeInSeconds + "," + supplement.supplementType.toString());
     }
 
-    public void removeSupplement(User user,Supplement supplement) throws IOException {
+    public void removeSupplement(User user, Supplement supplement) throws FileNotFoundException, IOException {
         removeFromFile("./Data/supplements/" + user.name + ".csv", supplement.supplementSalary + "," + supplement.startTimeInSeconds + "," + supplement.endTimeInSeconds + "," + supplement.supplementType.toString());
+    }
+
+    public void addSupplementType(WorkDay workDay, SupplementType supplementType) throws IOException {
+        appendToFile("./Data/workdaySupplementTypes/" + workDay.getDate() + ".csv", supplementType.label);
+    }
+
+    public void removeSupplementType(WorkDay workDay, SupplementType supplementType) throws FileNotFoundException, IOException {
+        appendToFile("./Data/workdaySupplementTypes/" + workDay.getDate() + ".csv", supplementType.label);
     }
 }

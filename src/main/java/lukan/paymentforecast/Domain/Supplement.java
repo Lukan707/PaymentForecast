@@ -1,4 +1,4 @@
-package lukan.paymentforecast.DomainLogic;
+package lukan.paymentforecast.Domain;
 
 /*
  * This class represents a supplement.
