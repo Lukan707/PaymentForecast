@@ -1,0 +1,33 @@
+<mxfile host="65bd71144e">
+    <diagram id="xYsrTmPBRTQ-c05WCfKt" name="Page-1">
+        <mxGraphModel dx="1115" dy="1151" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Model" style="shape=folder;fontStyle=1;tabWidth=110;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="410" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="html=1;strokeColor=none;resizeWidth=1;resizeHeight=1;fillColor=none;part=1;connectable=0;allowArrows=0;deletable=0;" parent="2" vertex="1">
+                    <mxGeometry width="221.18421052631578" height="460" relative="1" as="geometry">
+                        <mxPoint y="30" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;" edge="1" parent="2" source="14" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="DataService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="2" vertex="1">
+                    <mxGeometry x="21.58" y="150" width="348.42" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="14" vertex="1">
+                    <mxGeometry y="26" width="348.42" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+ getUsers()&#10;+ getWorkDays()&#10;+ getTimeIntervals(String)&#10;+ selectWorkDayType(String)&#10;+ getSupplementTypes(String)&#10;+ getSupplements(User)&#10;+ setlectSupplementType(String)&#10;- appendToFile(String, String)&#10;- removeFromFile(String, String)&#10;+ addUser(User)&#10;+ removeUser(User)&#10;+ addWorkDay(User)&#10;+ removeWorkDay(User)&#10;+ addTimeInterval(WorkDay, TimeInterval)&#10;+ removeTimeInterval(WorkDay, TimeInterval)&#10;+ addSupplement(User, Supplement)&#10;+ removeSupplement(User, Supplement)&#10;+ addsupplementType(WorkDay, SupplementType)&#10;+ removeSupplementType(WorkDay, SupplementType)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="14" vertex="1">
+                    <mxGeometry y="34" width="348.42" height="286" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="«interface»&lt;br&gt;&lt;b&gt;DataService&lt;/b&gt;" style="html=1;" parent="2" vertex="1">
+                    <mxGeometry x="141.58" y="50" width="108.42" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

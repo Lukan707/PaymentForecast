@@ -205,7 +205,7 @@ public class DataService implements DataServiceInterface {
         appendToFile("./Data/supplements/" + user.name + ".csv", supplement.supplementSalary + "," + supplement.startTimeInSeconds + "," + supplement.endTimeInSeconds + "," + supplement.supplementType.toString());
     }
 
-    public void removeSupplement(User user, Supplement supplement) throws IOException {
+    public void removeSupplement(User user, Supplement supplement) throws FileNotFoundException, IOException {
         removeFromFile("./Data/supplements/" + user.name + ".csv", supplement.supplementSalary + "," + supplement.startTimeInSeconds + "," + supplement.endTimeInSeconds + "," + supplement.supplementType.toString());
     }
 
@@ -213,7 +213,7 @@ public class DataService implements DataServiceInterface {
         appendToFile("./Data/workdaySupplementTypes/" + workDay.getDate() + ".csv", supplementType.label);
     }
 
-    public void removeSupplementType(WorkDay workDay, SupplementType supplementType) throws IOException {
+    public void removeSupplementType(WorkDay workDay, SupplementType supplementType) throws FileNotFoundException, IOException {
         appendToFile("./Data/workdaySupplementTypes/" + workDay.getDate() + ".csv", supplementType.label);
     }
 }

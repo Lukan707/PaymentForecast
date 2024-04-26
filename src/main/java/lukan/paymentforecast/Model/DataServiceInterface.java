@@ -17,5 +17,7 @@ public interface DataServiceInterface {
     public void addTimeInterval(WorkDay workday, TimeInterval timeInterval) throws IOException;
     public void removeTimeInterval(WorkDay workday, TimeInterval timeInterval) throws FileNotFoundException, IOException;
     public void addSupplement(User user, Supplement supplement) throws IOException;
-    public void removeSupplement(User user,Supplement supplement) throws FileNotFoundException, IOException;
+    public void removeSupplement(User user, Supplement supplement) throws FileNotFoundException, IOException;
+    public void addSupplementType(WorkDay workDay, SupplementType supplementType) throws IOException;
+    public void removeSupplementType(WorkDay workDay, SupplementType supplementType) throws FileNotFoundException, IOException;
 }
