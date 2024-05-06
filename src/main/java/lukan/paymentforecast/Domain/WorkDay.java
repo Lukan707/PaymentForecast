@@ -6,8 +6,10 @@ import java.util.List;
 
 /*
  * This class represent a day where a user is working.
- * It holds the hours worked, hourly salary, associated User and day of the week.
- * It contains method for calculating the salary of the day, and for getting the salary.
+ * It holds the salary for the day, hours worked (as a list of TimeInterval obejcts), 
+ * associated User, supplements and day of the week.
+ * It contains a method for calculating the salary of the day, a method for adding a bonus 
+ * and getters for getting the user-, salary-, date- and workDayType field.
  * The methods are split, since the retrieval of the attribute happens more
  * frequently than calculating it.
 */
@@ -28,16 +30,16 @@ public class WorkDay {
         this(date, timeIntervals, workdayType, user, supplements, 0.0);
     }
 
-    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, Double bonus) {
-        this(date, timeIntervals, workdayType, user, new ArrayList<SupplementType>(), bonus);
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, Double salary) {
+        this(date, timeIntervals, workdayType, user, new ArrayList<SupplementType>(), salary);
     }
 
-    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements, Double bonus) {
+    public WorkDay(Date date, List<TimeInterval> timeIntervals, WorkDayType workdayType, User user, List<SupplementType> supplements, Double salary) {
         this.date = date;
         this.timeIntervals = timeIntervals;
         this.workdayType = workdayType;
         this.user = user;
-        this.salary = bonus;
+        this.salary = salary;
         this.supplements = supplements;
     }
 
@@ -75,6 +77,8 @@ public class WorkDay {
             }
         }
     }
+
+    public void addBonus(Double bonus) { salary += bonus; }
     public Double getSalary() { return salary; }
     public Date getDate() { return date; }
     public User getUser() { return user; }
