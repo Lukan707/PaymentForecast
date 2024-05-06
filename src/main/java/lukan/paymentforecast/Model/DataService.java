@@ -32,7 +32,7 @@ import lukan.paymentforecast.Domain.*;
  * 
  * Data formats:
  * - user files: username,hourly salary (double)
- * - workday files: date(long),workday type(WorkDayType),bonus
+ * - workday files: date(long),workday type(WorkDayType),salary
  * - timeInterval files: start time in seconds(int), end time in seconds(int), is a break(boolean)
  * - userSupplement files: supplemnt salary(double), start time in seconds(int), end time in seconds(int), supplement type(Supplement Type)
  * - workdaySupplementTypes files: supplement type(SupplementType)
@@ -186,11 +186,11 @@ public class DataService implements DataServiceInterface {
     }
 
     public void addWorkDay(WorkDay workDay) throws IOException {
-        appendToFile("./Data/workdays/" + workDay.getUser().name + ".csv", workDay.getDate() + "," + workDay.getType());
+        appendToFile("./Data/workdays/" + workDay.getUser().name + ".csv", workDay.getDate() + "," + workDay.getType() + "," + workDay.getSalary());
     }
     
     public void removeWorkDay(WorkDay workDay) throws FileNotFoundException, IOException {
-        removeFromFile("./Data/workdays/" + workDay.getUser().name + ".csv", workDay.getDate() + "," + workDay.getType());
+        removeFromFile("./Data/workdays/" + workDay.getUser().name + ".csv", workDay.getDate() + "," + workDay.getType() + "," + workDay.getSalary());
     }
 
     public void addTimeInterval(WorkDay workDay, TimeInterval timeInterval) throws IOException {
