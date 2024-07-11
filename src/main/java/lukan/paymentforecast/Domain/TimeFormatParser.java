@@ -6,9 +6,16 @@ public class TimeFormatParser {
     public static int timeformatToSeconds(String time) throws InvalidTimeSlotException {
         String[] timeArray = time.split(":");
 
-        Integer hours = Integer.parseInt(timeArray[0]);
-        Integer minutes = Integer.parseInt(timeArray[1]);
-        
+        Integer hours;
+        Integer minutes;
+
+        try {
+            hours = Integer.parseInt(timeArray[0]);
+            minutes = Integer.parseInt(timeArray[1]);
+        } catch (NumberFormatException e) {
+            throw new InvalidTimeSlotException("Timeslot contians illegal characters");
+        }
+
         if (hours < 0 || hours > 23) {
             throw new InvalidTimeSlotException("The given hours is not within a valid range (0 - 23)");
         }

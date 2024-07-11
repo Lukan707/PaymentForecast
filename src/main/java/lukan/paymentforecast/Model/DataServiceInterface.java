@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.List;
 
 import lukan.paymentforecast.Domain.*;
+import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
 
 public interface DataServiceInterface {
+    public User getCurrentUser() throws FileNotFoundException, IOException, NoCurrentUser;
     public List<User> getUsers() throws FileNotFoundException, IOException;
     public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException;
     public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException;

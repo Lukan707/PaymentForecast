@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import lukan.paymentforecast.Domain.*;
+import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
 
 /*
  * This class is an implementation of the DataService interface.
@@ -38,6 +39,25 @@ import lukan.paymentforecast.Domain.*;
  * - workdaySupplementTypes files: supplement type(SupplementType)
  */ 
 public class DataService implements DataServiceInterface {
+
+    public User getCurrentUser() throws FileNotFoundException, IOException, NoCurrentUser {
+        BufferedReader reader = new BufferedReader(new FileReader("./Data/users/currentUser.csv"));
+        User currentUser = null;
+        String line = "";
+
+        line = reader.readLine();
+        if (line == null) {
+            // When reaching EOF, readLine returns null
+            reader.close();
+            throw new NoCurrentUser("There is no curent user");
+        }
+        
+        String[] data = line.trim().split(",");
+        currentUser = new User(data[0], Double.parseDouble(data[1]));
+        
+        reader.close();
+        return currentUser;
+    }
     
     public List<User> getUsers() throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/users/userList.csv"));
