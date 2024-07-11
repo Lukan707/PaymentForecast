@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.053" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="lukan.paymentforecast.Domain.TestsWorkDay" time="0.077" tests="40" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -60,13 +60,44 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="TimeformatToSeconds_1600" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.012"/>
-  <testcase name="TimeformatToSeconds_2229" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeformatToSeconds_2359" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeformatToSeconds_00minus01_ThrowsException" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.015"/>
-  <testcase name="TimeFormatToSeconds_2015" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeFormatToSeconds_2130" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeformatToSeconds_0060_ThrowsException" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeformatToSeconds_minus0100_ThrowsException" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
-  <testcase name="TimeformatToSeconds_2400_ThrowsException" classname="lukan.paymentforecast.Domain.TestsTimeFormatAdapter" time="0.0"/>
+  <testcase name="WeekDayWithBreakWithNightSupplementEarlyHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.015"/>
+  <testcase name="WeekDayWithBreakNightAndSenioritySupplementEarlyHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.001"/>
+  <testcase name="WeekDayWithoutBreakWithEveningSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithBreakEveningAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.003"/>
+  <testcase name="SaturdayWithoutBreakWithSundayAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="HolidayDayWithoutBreakWithHolidayAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.004"/>
+  <testcase name="WeekDayWithoutBreakWithEveningAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.002"/>
+  <testcase name="WeekDayWithBreakNightAndSenioritySupplementLateHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithBreakSaturdayAndBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekdayWithBreakSeniorityAndBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekdayWithoutBreakWithBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="HolidayWithoutBreakWithHolidayAndExtraordinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="HolidayWithoutBreakWithHolidayAndBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.011"/>
+  <testcase name="WeekDayWithBreakAndNoSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithNightAndSenioritySupplementEarlyHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekdayWithBreakAndBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithNightSupplementEarlyHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithoutBreakWithSaturdayAndExtraordinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithNightSupplementLateHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithBreakAndSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithoutBreakWithSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithBreakAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithBreakSundayAndSenioritySupplementLateHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithBreakAndSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithoutBreakWithSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.002"/>
+  <testcase name="WeekDayWithoutBreakAndSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithoutBreakWithSundayAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithBreakAndEveningSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.005"/>
+  <testcase name="HoliayWithoutBreakWithHolidaySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithBreakAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekdayWithBreakWithExtraodinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SaturdayWithBreakSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithBonusAndExtraordinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithBreakSundayAndSenioritySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.006"/>
+  <testcase name="WeekdayWithoutBreakWithExtraodinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithoutBreakWithSundayAndExtraordinarySupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithoutBreakWithNightAndSenioritySupplementLateHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="WeekDayWithBreakWithNightSupplementLateHours" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
+  <testcase name="SundayWithBreakSundayAndBonusSupplement" classname="lukan.paymentforecast.Domain.TestsWorkDay" time="0.0"/>
 </testsuite>
