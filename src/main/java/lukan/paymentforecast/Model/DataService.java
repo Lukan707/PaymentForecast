@@ -43,6 +43,7 @@ public class DataService implements DataServiceInterface {
     public void setCurrentUser(User user) throws IOException {
         File file = new File("./Data/users/currentUser.csv");
         // Creates a new file, if and only if, the files does not already exists
+        file.getParentFile().mkdirs();
         file.createNewFile();
         /* The boolean parameter specifies if the writer should append to the file,
          * instead of overwriting it. */
@@ -173,6 +174,7 @@ public class DataService implements DataServiceInterface {
     private void appendToFile(String filePath, String line) throws IOException {
         File file = new File(filePath);
         // Creates a new file, if and only if, the files does not already exists
+        file.getParentFile().mkdirs();
         file.createNewFile();
         /* The boolean parameter specifies if the writer should append to the file,
          * instead of overwriting it. */
@@ -195,9 +197,8 @@ public class DataService implements DataServiceInterface {
                 break;
             if (line.trim().equals(linetoRemove))
                 continue;
-            /* Write the line to the temporary file, 
-             * with a system specific newline character */
-            writer.write(line + System.getProperty("line.seperator"));
+            // Write the line to the temporary file
+            writer.write(line);
         }
         reader.close();
         writer.close();

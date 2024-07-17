@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="lukan.paymentforecast.Model.TestCurrentUser" time="0.031" tests="4" errors="3" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -60,9 +60,44 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="selectSupplementType_Saturday" classname="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0"/>
-  <testcase name="selectSupplementType_Sunday" classname="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0"/>
-  <testcase name="selectSupplementType_Holiday" classname="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0"/>
-  <testcase name="selectSupplementType_Weekday" classname="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0"/>
-  <testcase name="selectSupplementType_Extraordinary" classname="lukan.paymentforecast.Model.TestSelectSupplementType" time="0.0"/>
+  <testcase name="TestSetCurrentUser" classname="lukan.paymentforecast.Model.TestCurrentUser" time="0.016">
+    <failure message="expected: &lt;130.0&gt; but was: &lt;120.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <130.0> but was: <120.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:919)
+	at lukan.paymentforecast.Model.TestCurrentUser.TestSetCurrentUser(TestCurrentUser.java:74)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+  </testcase>
+  <testcase name="TestSetCurrentUserCreatesNewFile" classname="lukan.paymentforecast.Model.TestCurrentUser" time="0.0">
+    <error message="Cannot read field &quot;name&quot; because &quot;response&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read field "name" because "response" is null
+	at lukan.paymentforecast.Model.TestCurrentUser.TestSetCurrentUserCreatesNewFile(TestCurrentUser.java:98)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+  </testcase>
+  <testcase name="TestSetCurrentUserOverwritesFileContent" classname="lukan.paymentforecast.Model.TestCurrentUser" time="0.015">
+    <error message="Cannot read field &quot;name&quot; because &quot;response&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read field "name" because "response" is null
+	at lukan.paymentforecast.Model.TestCurrentUser.TestSetCurrentUserOverwritesFileContent(TestCurrentUser.java:130)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+    <system-out><![CDATA[Error: could not set or retrieve current user; The system cannot find the path specified
+]]></system-out>
+  </testcase>
+  <testcase name="TestGetCurrentUser" classname="lukan.paymentforecast.Model.TestCurrentUser" time="0.0">
+    <error message="Cannot read field &quot;name&quot; because &quot;response&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot read field "name" because "response" is null
+	at lukan.paymentforecast.Model.TestCurrentUser.TestGetCurrentUser(TestCurrentUser.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+  </testcase>
 </testsuite>
