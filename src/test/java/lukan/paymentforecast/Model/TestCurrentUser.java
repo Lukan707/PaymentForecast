@@ -1,6 +1,8 @@
 package lukan.paymentforecast.Model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,6 +11,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import lukan.paymentforecast.Domain.User;
+import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
+
+/* 
+    TODO: Change such testing is not done on the actual files of the program?
+    Or just let it be, as the program is to be compiled and move elsewhere when done.
+*/
 
 public class TestCurrentUser {
 
@@ -42,6 +50,24 @@ public class TestCurrentUser {
         // Assert
         assertEquals(testUser.name, response.name);
         assertEquals(testUser.hourlySalary, response.hourlySalary);
+    }
+
+    @Test
+    public void TestGetCurrentUserThrowsNoCurrentUserException() {
+        // Arrange
+        File file = new File("./Data/users/currentUSer.csv");
+        DataService data = new DataService();
+
+        try {
+            file.delete();
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        } catch (IOException e) {
+
+        }
+
+        // Assert
+        assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
     }
 
     @Test
