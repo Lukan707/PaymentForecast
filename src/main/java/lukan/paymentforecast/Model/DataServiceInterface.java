@@ -12,6 +12,7 @@ public interface DataServiceInterface {
     public List<User> getUsers() throws FileNotFoundException, IOException;
     public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException;
     public List<Supplement> getSupplements(User user) throws FileNotFoundException, IOException;
+    public void setCurrentUser(User user) throws IOException;
     public void addUser(User user) throws IOException;
     public void removeUser(User user) throws FileNotFoundException, IOException;
     public void addWorkDay(WorkDay workday) throws IOException;

@@ -40,6 +40,17 @@ import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
  */ 
 public class DataService implements DataServiceInterface {
 
+    public void setCurrentUser(User user) throws IOException {
+        File file = new File("./Data/users/currentUser.csv");
+        // Creates a new file, if and only if, the files does not already exists
+        file.createNewFile();
+        /* The boolean parameter specifies if the writer should append to the file,
+         * instead of overwriting it. */
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
+        writer.write(user.name + ", " + user.hourlySalary);
+        writer.close();
+    }
+
     public User getCurrentUser() throws FileNotFoundException, IOException, NoCurrentUser {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/users/currentUser.csv"));
         User currentUser = null;
