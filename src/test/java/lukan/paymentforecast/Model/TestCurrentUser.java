@@ -108,6 +108,7 @@ public class TestCurrentUser {
         DataService data = new DataService();
         
         // Act
+        
         try {
             file.delete();
             data.setCurrentUser(testUser);

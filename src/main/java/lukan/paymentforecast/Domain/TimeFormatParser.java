@@ -4,6 +4,10 @@ import lukan.paymentforecast.Domain.Exceptions.InvalidTimeSlotException;
 
 public class TimeFormatParser {
     public static int timeformatToSeconds(String time) throws InvalidTimeSlotException {
+        if (time.isEmpty()) {
+            throw new InvalidTimeSlotException("The given string is empty");
+        }
+        
         String[] timeArray = time.split(":");
 
         Integer hours;
