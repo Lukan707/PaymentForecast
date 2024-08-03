@@ -8,6 +8,7 @@ import lukan.paymentforecast.Domain.*;
 import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
 
 public interface DataServiceInterface {
+    public void deleteAllWorkDays(User user);
     public User getCurrentUser() throws FileNotFoundException, IOException, NoCurrentUser;
     public List<User> getUsers() throws FileNotFoundException, IOException;
     public List<WorkDay> getWorkDays(User user) throws FileNotFoundException, IOException;

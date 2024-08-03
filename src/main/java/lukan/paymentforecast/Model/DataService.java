@@ -40,6 +40,11 @@ import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
  */ 
 public class DataService implements DataServiceInterface {
 
+    public void deleteAllWorkDays(User user) {
+        File file = new File("./Data/workdays/" + user.name + ".csv");
+        file.delete();
+    }
+
     public void removeCurrentUser() throws IOException {
         File file = new File("./Data/users/currentUser.csv");
         file.delete();

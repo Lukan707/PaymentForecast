@@ -44,6 +44,7 @@ public class DeleteUser implements Runnable {
         } else {
             try {
                 data.removeUser(user);
+                data.deleteAllWorkDays(user);
             } catch (FileNotFoundException FNFe) {
 
             } catch (IOException IOe) {
