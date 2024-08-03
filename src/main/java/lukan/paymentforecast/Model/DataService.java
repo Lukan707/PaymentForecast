@@ -196,6 +196,8 @@ public class DataService implements DataServiceInterface {
     private void removeFromFile(String filePath, String linetoRemove) throws FileNotFoundException, IOException {
         File file = new File(filePath);
         File tmpFile = new File(".Data/tmpFile.csv");
+        tmpFile.getParentFile().mkdirs();
+        tmpFile.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tmpFile));
         String line = "";
@@ -224,7 +226,7 @@ public class DataService implements DataServiceInterface {
     }
 
     public void removeUser(User user) throws FileNotFoundException, IOException {
-        removeFromFile("./Date/users/userList.csv", user.name + "," + user.hourlySalary);
+        removeFromFile("./Data/users/userList.csv", user.name + "," + user.hourlySalary);
     }
 
     public void addWorkDay(WorkDay workDay) throws IOException {

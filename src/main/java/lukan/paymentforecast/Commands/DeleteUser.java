@@ -43,8 +43,10 @@ public class DeleteUser implements Runnable {
             System.out.println("The given user does not exist. Check the typing of the users name, if correct, no further action is needed.");
         } else {
             try {
+                System.out.println("'" + user.name + "'");
+                System.out.println("'" + user.hourlySalary + "'");
                 data.removeUser(user);
-                data.deleteAllWorkDays(user);
+                // data.deleteAllWorkDays(user);
             } catch (FileNotFoundException FNFe) {
                 System.out.println("error 1");
             } catch (IOException IOe) {
