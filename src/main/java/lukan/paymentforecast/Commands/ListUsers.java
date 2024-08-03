@@ -15,7 +15,6 @@ public class ListUsers implements Runnable {
     @Override
     public void run() {
         DataService data = new DataService();
-        
         List<User> users = new ArrayList<>();
 
         try {
