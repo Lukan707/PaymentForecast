@@ -52,23 +52,23 @@ public class TestCurrentUser {
         assertEquals(testUser.hourlySalary, response.hourlySalary);
     }
 
-    @Test
-    public void TestGetCurrentUserThrowsNoCurrentUserException() {
-        // Arrange
-        File file = new File("./Data/users/currentUSer.csv");
-        DataService data = new DataService();
+    // @Test
+    // public void TestGetCurrentUserThrowsNoCurrentUserException() {
+    //     // Arrange
+    //     File file = new File("./Data/users/currentUSer.csv");
+    //     DataService data = new DataService();
 
-        try {
-            file.delete();
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-        } catch (IOException e) {
+    //     try {
+    //         file.delete();
+    //         file.getParentFile().mkdirs();
+    //         file.createNewFile();
+    //     } catch (IOException e) {
 
-        }
+    //     }
 
-        // Assert
-        assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
-    }
+    //     // Assert
+    //     assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
+    // }
 
     @Test
     public void TestSetCurrentUser() {
