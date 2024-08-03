@@ -3,6 +3,7 @@ package lukan.paymentforecast;
 import lukan.paymentforecast.Commands.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import lukan.paymentforecast.Domain.User;
 import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
 import lukan.paymentforecast.Model.DataService;
@@ -11,8 +12,17 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Spec;
 
-@Command(name = "paymentforecast", version = "1.0.0", mixinStandardHelpOptions = true, subcommands = { CreateUser.class,
-        CommandLine.HelpCommand.class })
+@Command(
+    name = "paymentforecast", 
+    version = "1.0.0", 
+    mixinStandardHelpOptions = true, 
+    subcommands = { 
+        CreateUser.class,
+        DeleteUser.class,
+        ListUsers.class,
+        CommandLine.HelpCommand.class 
+    }
+)
 
 public class App {
     User user;

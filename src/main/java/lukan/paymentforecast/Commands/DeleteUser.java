@@ -33,7 +33,7 @@ public class DeleteUser implements Runnable {
 
         boolean hasBeenFound = false;
         for (User u : users) {
-            if (u.name == name) {
+              if (u.name.equals(name)) {
                 hasBeenFound = true;
                 user = u;
             }
@@ -46,9 +46,9 @@ public class DeleteUser implements Runnable {
                 data.removeUser(user);
                 data.deleteAllWorkDays(user);
             } catch (FileNotFoundException FNFe) {
-
+                System.out.println("error 1");
             } catch (IOException IOe) {
-
+                System.out.println("error 2");
             }
             try {
                 User currentUser = data.getCurrentUser();

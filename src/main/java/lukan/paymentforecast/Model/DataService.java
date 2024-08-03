@@ -58,7 +58,7 @@ public class DataService implements DataServiceInterface {
         /* The boolean parameter specifies if the writer should append to the file,
          * instead of overwriting it. */
         BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
-        writer.write(user.name + ", " + user.hourlySalary);
+        writer.write(user.name + "," + user.hourlySalary);
         writer.close();
     }
 
@@ -224,7 +224,7 @@ public class DataService implements DataServiceInterface {
     }
 
     public void removeUser(User user) throws FileNotFoundException, IOException {
-        removeFromFile("./Date/users/userLists.csv", user.name + "," + user.hourlySalary);
+        removeFromFile("./Date/users/userList.csv", user.name + "," + user.hourlySalary);
     }
 
     public void addWorkDay(WorkDay workDay) throws IOException {

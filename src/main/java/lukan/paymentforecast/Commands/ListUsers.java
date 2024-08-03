@@ -8,13 +8,9 @@ import java.util.List;
 import lukan.paymentforecast.Domain.User;
 import lukan.paymentforecast.Model.DataService;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Parameters;
 
-@Command(name = "deleteuser", description = "Deletes the specified user, if such a user exists.")
+@Command(name = "listusers", description = "Lists all users.")
 public class ListUsers implements Runnable {
-
-    @Parameters(paramLabel = "<name>", description = "Type the name of the user you wish to delete", arity = "1")
-    String name;
 
     @Override
     public void run() {
@@ -28,15 +24,15 @@ public class ListUsers implements Runnable {
             if (users.size() > 0) {
                 System.out.println("Users:");
                 for (User user : users) {
-                    System.out.println(user.name + " - " + user.hourlySalary);
+                    System.out.println("User name: " + user.name + ",  Hourly salary:" + user.hourlySalary);
                 }
             } else {
                 System.out.println("There are no users.");
             }
         } catch (FileNotFoundException FNFe) {
-
+            System.out.println("Error: The needed file is not found");
         } catch (IOException IOe) {
-
+            System.out.println("Error: The program is unable to access the file");
         }
     }
 }
