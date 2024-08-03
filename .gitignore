@@ -27,5 +27,5 @@ hs_err_pid*
 replay_pid*
 
 # Maven reports
-target/surfire-reports/*
-target/maven-status/*
+target/surfire-reports/
+target/maven-status/
