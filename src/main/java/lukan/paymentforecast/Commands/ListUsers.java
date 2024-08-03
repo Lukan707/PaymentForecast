@@ -24,7 +24,7 @@ public class ListUsers implements Runnable {
             if (users.size() > 0) {
                 System.out.println("Users:");
                 for (User user : users) {
-                    System.out.println("User name: " + user.name + ",  Hourly salary:" + user.hourlySalary);
+                    System.out.println("User name: " + user.name + ", Hourly salary: " + user.hourlySalary);
                 }
             } else {
                 System.out.println("There are no users.");

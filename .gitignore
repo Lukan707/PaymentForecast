@@ -8,7 +8,7 @@
 *.ctxt
 
 # Program data files
-./Data/*
+Data/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
