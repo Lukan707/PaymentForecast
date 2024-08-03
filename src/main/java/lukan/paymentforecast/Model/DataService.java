@@ -40,6 +40,11 @@ import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
  */ 
 public class DataService implements DataServiceInterface {
 
+    public void removeCurrentUser() throws IOException {
+        File file = new File("./Data/users/currentUser.csv");
+        file.delete();
+    }
+
     public void setCurrentUser(User user) throws IOException {
         File file = new File("./Data/users/currentUser.csv");
         // Creates a new file, if and only if, the files does not already exists
