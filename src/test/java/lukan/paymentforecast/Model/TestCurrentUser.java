@@ -56,7 +56,9 @@ public class TestCurrentUser {
         System.out.flush();
         System.out.println("Printing is possible");
 
-        assertThrows(IOException.class, () -> file.delete());
+        file.delete();
+
+        assertThrows(IOException.class, () -> file.getParentFile().mkdirs());
 
         // try {
         //     file.delete();
