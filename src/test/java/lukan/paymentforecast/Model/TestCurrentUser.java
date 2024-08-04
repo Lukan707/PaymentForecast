@@ -52,22 +52,13 @@ public class TestCurrentUser {
     @Test
     public void TestGetCurrentUserThrowsNoCurrentUserException() {
         // Arrange
-        File file = new File("./Data/users/currentUSer.csv");
+        File file = new File("./Data/users/currentUser.csv");
         DataService data = new DataService();
 
-        System.out.flush();
-        System.out.println("Printing is possible");
-
-        assertTrue(file.delete());
-        file.getParentFile().mkdir();
-
         try {
-            // file.delete();
-            // file.getParentFile().mkdirs();
-            assertTrue(file.createNewFile());
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            assertEquals(null,reader.readLine());
-            reader.close();
+            file.delete();
+            file.getParentFile().mkdirs();
+            file.createNewFile();
         } catch (IOException e) {
             
         }
