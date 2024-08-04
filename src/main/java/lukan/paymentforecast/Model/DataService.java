@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import lukan.paymentforecast.Domain.*;
+import lukan.paymentforecast.Domain.Exceptions.NoCurrentUser;
 
 /*
  * This class is an implementation of the DataService interface.
@@ -38,6 +39,47 @@ import lukan.paymentforecast.Domain.*;
  * - workdaySupplementTypes files: supplement type(SupplementType)
  */ 
 public class DataService implements DataServiceInterface {
+
+    public void deleteAllWorkDays(User user) {
+        File file = new File("./Data/workdays/" + user.name + ".csv");
+        file.delete();
+    }
+
+    public void removeCurrentUser() throws IOException {
+        File file = new File("./Data/users/currentUser.csv");
+        file.delete();
+    }
+
+    public void setCurrentUser(User user) throws IOException {
+        File file = new File("./Data/users/currentUser.csv");
+        // Creates a new file, if and only if, the files does not already exists
+        file.getParentFile().mkdirs();
+        file.createNewFile();
+        /* The boolean parameter specifies if the writer should append to the file,
+         * instead of overwriting it. */
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
+        writer.write(user.name + "," + user.hourlySalary);
+        writer.close();
+    }
+
+    public User getCurrentUser() throws FileNotFoundException, IOException, NoCurrentUser {
+        BufferedReader reader = new BufferedReader(new FileReader("./Data/users/currentUser.csv"));
+        User currentUser = null;
+        String line = "";
+
+        line = reader.readLine();
+        if (line == null) {
+            // When reaching EOF, readLine returns null
+            reader.close();
+            throw new NoCurrentUser("There is no curent user");
+        }
+        
+        String[] data = line.trim().split(",");
+        currentUser = new User(data[0], Double.parseDouble(data[1]));
+        
+        reader.close();
+        return currentUser;
+    }
     
     public List<User> getUsers() throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("./Data/users/userList.csv"));
@@ -142,6 +184,7 @@ public class DataService implements DataServiceInterface {
     private void appendToFile(String filePath, String line) throws IOException {
         File file = new File(filePath);
         // Creates a new file, if and only if, the files does not already exists
+        file.getParentFile().mkdirs();
         file.createNewFile();
         /* The boolean parameter specifies if the writer should append to the file,
          * instead of overwriting it. */
@@ -152,7 +195,9 @@ public class DataService implements DataServiceInterface {
 
     private void removeFromFile(String filePath, String linetoRemove) throws FileNotFoundException, IOException {
         File file = new File(filePath);
-        File tmpFile = new File(".Data/tmpFile.csv");
+        File tmpFile = new File("./Data/tmpFile.csv");
+        tmpFile.getParentFile().mkdirs();
+        tmpFile.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tmpFile));
         String line = "";
@@ -164,9 +209,8 @@ public class DataService implements DataServiceInterface {
                 break;
             if (line.trim().equals(linetoRemove))
                 continue;
-            /* Write the line to the temporary file, 
-             * with a system specific newline character */
-            writer.write(line + System.getProperty("line.seperator"));
+            // Write the line to the temporary file
+            writer.write(line);
         }
         reader.close();
         writer.close();
@@ -182,7 +226,7 @@ public class DataService implements DataServiceInterface {
     }
 
     public void removeUser(User user) throws FileNotFoundException, IOException {
-        removeFromFile("./Date/users/userLists.csv", user.name + "," + user.hourlySalary);
+        removeFromFile("./Data/users/userList.csv", user.name + "," + user.hourlySalary);
     }
 
     public void addWorkDay(WorkDay workDay) throws IOException {
