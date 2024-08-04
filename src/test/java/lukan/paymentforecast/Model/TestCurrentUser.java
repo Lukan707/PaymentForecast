@@ -53,13 +53,18 @@ public class TestCurrentUser {
         File file = new File("./Data/users/currentUSer.csv");
         DataService data = new DataService();
 
-        try {
-            file.delete();
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-        } catch (IOException e) {
-            System.out.println("The test failed due to an ioexception");
-        }
+        System.out.flush();
+        System.out.println("Printing is possible");
+
+        assertThrows(IOException.class, () -> file.delete());
+
+        // try {
+        //     file.delete();
+        //     file.getParentFile().mkdirs();
+        //     file.createNewFile();
+        // } catch (IOException e) {
+            
+        // }
 
         // Assert
         assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
