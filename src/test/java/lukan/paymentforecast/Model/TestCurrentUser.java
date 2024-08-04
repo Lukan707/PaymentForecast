@@ -56,21 +56,15 @@ public class TestCurrentUser {
         System.out.flush();
         System.out.println("Printing is possible");
 
-        file.delete();
-        file.getParentFile().mkdirs();
-
-        assertThrows(IOException.class, () -> file.createNewFile());
-
-        // try {
-        //     file.delete();
-        //     file.getParentFile().mkdirs();
-        //     file.createNewFile();
-        // } catch (IOException e) {
+        try {
+            file.delete();
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        } catch (IOException e) {
             
-        // }
+        }
 
-        // Assert
-        //assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
+        assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
     }
 
     @Test
