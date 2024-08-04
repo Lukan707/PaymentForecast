@@ -195,7 +195,7 @@ public class DataService implements DataServiceInterface {
 
     private void removeFromFile(String filePath, String linetoRemove) throws FileNotFoundException, IOException {
         File file = new File(filePath);
-        File tmpFile = new File(".Data/tmpFile.csv");
+        File tmpFile = new File("./Data/tmpFile.csv");
         tmpFile.getParentFile().mkdirs();
         tmpFile.createNewFile();
         BufferedReader reader = new BufferedReader(new FileReader(filePath));

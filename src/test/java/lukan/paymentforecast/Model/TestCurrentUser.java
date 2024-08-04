@@ -72,7 +72,7 @@ public class TestCurrentUser {
             
         }
 
-        assertThrows(IOException.class, () -> data.getCurrentUser());
+        assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
     }
 
     @Test
