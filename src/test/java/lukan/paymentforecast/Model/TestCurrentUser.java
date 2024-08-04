@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class TestCurrentUser {
             
         }
 
-        // assertThrows(NoCurrentUser.class, () -> data.getCurrentUser());
+        assertThrows(FileNotFoundException.class, () -> data.getCurrentUser());
     }
 
     @Test
