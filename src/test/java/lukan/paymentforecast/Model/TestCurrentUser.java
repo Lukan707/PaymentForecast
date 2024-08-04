@@ -58,12 +58,14 @@ public class TestCurrentUser {
         System.out.println("Printing is possible");
 
         assertTrue(file.delete());
-        assertTrue(file.getParentFile().mkdir());
+        file.getParentFile().mkdir();
 
         try {
             // file.delete();
             // file.getParentFile().mkdirs();
             assertTrue(file.createNewFile());
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            assertEquals(null,reader.readLine());
         } catch (IOException e) {
             
         }
