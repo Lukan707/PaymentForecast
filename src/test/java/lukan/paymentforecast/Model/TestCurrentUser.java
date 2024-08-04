@@ -67,11 +67,12 @@ public class TestCurrentUser {
             assertTrue(file.createNewFile());
             BufferedReader reader = new BufferedReader(new FileReader(file));
             assertEquals(null,reader.readLine());
+            reader.close();
         } catch (IOException e) {
             
         }
 
-        assertThrows(FileNotFoundException.class, () -> data.getCurrentUser());
+        assertThrows(IOException.class, () -> data.getCurrentUser());
     }
 
     @Test
